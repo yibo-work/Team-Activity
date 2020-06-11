@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 团队
@@ -31,6 +32,11 @@ public class Team implements Serializable {
     private Integer teamUserId;
 
     /**
+     * 团长姓名
+     */
+    private String teamUserName;
+
+    /**
      * 团队创建时间
      */
     private Date createTime;
@@ -39,6 +45,11 @@ public class Team implements Serializable {
      * 团费
      */
     private Integer teamFee;
+
+    /**
+     *
+     */
+    private List<User> userList;
 
 
 }

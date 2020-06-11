@@ -68,4 +68,12 @@ public class PageController {
         return "userEdit";
     }
 
+    /**
+     * 团队管理
+     */
+    @GetMapping("/myTeamManage")
+    public String myTeamManage() {
+        return "myTeamManage";
+    }
+
 }
