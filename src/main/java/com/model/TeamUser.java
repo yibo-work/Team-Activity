@@ -29,5 +29,9 @@ public class TeamUser implements Serializable {
      */
     private Integer userId;
 
+    /**
+     * 队员名称
+     */
+    private String userName;
 
 }

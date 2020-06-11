@@ -23,19 +23,22 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="name" lay-verify="required" name="name" type="text"
+                        <input class="layui-input" id="name"  name="name" type="text"
                                v-model="user.name"></div>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label" for="gender">
-                    <span class="x-red">*</span>角色编号，1、男 0、女
+                    <span class="x-red">*</span>性别
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="gender" lay-verify="required" name="gender" type="text"
-                               v-model="user.gender"></div>
+                        <select id="gender" name="gender" v-model="user.gender">
+                            <option value="0">女</option>
+                            <option value="1">男</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -45,7 +48,7 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="age" lay-verify="required" name="age" type="text"
+                        <input class="layui-input" id="age"  name="age" type="text"
                                v-model="user.age"></div>
                 </div>
             </div>
@@ -56,52 +59,55 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="password" lay-verify="required" name="password" type="text"
+                        <input class="layui-input" id="password" lay-verify="required"  name="password" type="text"
                                v-model="user.password"></div>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label" for="phone">
-                    <span class="x-red">*</span>电话
+                    电话
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="phone" lay-verify="required" name="phone" type="text"
+                        <input class="layui-input" id="phone"  name="phone" type="text"
                                v-model="user.phone"></div>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label" for="address">
-                    <span class="x-red">*</span>地址
+                    地址
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="address" lay-verify="required" name="address" type="text"
+                        <input class="layui-input" id="address"  name="address" type="text"
                                v-model="user.address"></div>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label" for="email">
-                    <span class="x-red">*</span>邮箱
+                    邮箱
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="email" lay-verify="required" name="email" type="text"
+                        <input class="layui-input" id="email"  name="email" type="text"
                                v-model="user.email"></div>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label" for="roleId">
-                    <span class="x-red">*</span>角色编号，1、管理员 2、会员
+                    <span class="x-red">*</span>角色
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="roleId" lay-verify="required" name="roleId" type="text"
-                               v-model="user.roleId"></div>
+                        <select id="roleId" name="roleId" v-model="user.roleId">
+                            <option value="2">会员</option>
+                            <option value="1">管理员</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 

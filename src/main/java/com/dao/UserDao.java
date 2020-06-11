@@ -43,4 +43,15 @@ public interface UserDao {
      */
     int deleteById(Integer id);
 
+    /**
+     * 获取团队没有的会员
+     */
+    List<User> getAddTeamUserList(Map<String, Object> parameters);
+
+    /**
+     * 获取团队已有的会员
+     */
+    @Deprecated
+    List<User> getTeamUserList(Map<String, Object> parameters);
+
 }

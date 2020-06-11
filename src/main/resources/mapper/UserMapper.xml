@@ -2,15 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dao.UserDao">
-
     <select id="findById" resultType="com.model.User">
-        select `id`, `name`, `phone`, `password`, `score`, `role_id`
+        select `id`,
+               `name`,
+               `gender`,
+               `age`,
+               `password`,
+               `phone`,
+               `address`,
+               `email`,
+               `role_id`
         from user
         where id = #{id}
     </select>
 
     <select id="findByMap" resultType="com.model.User">
-        select `id`,`name`,`phone`,`password`,`score`,`role_id` from user
+        select `id`,`name`,`gender`,`age`,`password`,`phone`,`address`,`email`,`role_id` from user
         <where>
             <if test="id != null and id != ''">
                 and id = #{id}
@@ -18,14 +25,23 @@
             <if test="name != null and name != ''">
                 and name = #{name}
             </if>
-            <if test="phone != null and phone != ''">
-                and phone = #{phone}
+            <if test="gender != null and gender != ''">
+                and gender = #{gender}
+            </if>
+            <if test="age != null and age != ''">
+                and age = #{age}
             </if>
             <if test="password != null and password != ''">
                 and password = #{password}
             </if>
-            <if test="score != null and score != ''">
-                and score = #{score}
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
             </if>
             <if test="roleId != null and roleId != ''">
                 and role_id = #{roleId}
@@ -34,46 +50,136 @@
     </select>
 
     <select id="list" resultType="com.model.User">
-        select `id`,`name`,`phone`,`password`,`score`,`role_id` from user
+        select `id`,`name`,`gender`,`age`,`password`,`phone`,`address`,`email`,`role_id` from user
         <where>
-            <if test="id != null and id != ''">and id =
+            <if test="id != null and id != ''">
+                and id =
                 #{id}
             </if>
-            <if test="name != null and name != ''">and name =
+            <if test="name != null and name != ''">
+                and name =
                 #{name}
             </if>
-            <if test="phone != null and phone != ''">and phone =
-                #{phone}
+            <if test="gender != null and gender != ''">
+                and gender =
+                #{gender}
             </if>
-            <if test="password != null and password != ''">and password =
+            <if test="age != null and age != ''">
+                and age =
+                #{age}
+            </if>
+            <if test="password != null and password != ''">
+                and password =
                 #{password}
             </if>
-            <if test="score != null and score != ''">and score =
-                #{score}
+            <if test="phone != null and phone != ''">
+                and phone =
+                #{phone}
             </if>
-            <if test="roleId != null and roleId != ''">and role_id =
+            <if test="address != null and address != ''">
+                and address =
+                #{address}
+            </if>
+            <if test="email != null and email != ''">
+                and email =
+                #{email}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                and role_id =
                 #{roleId}
             </if>
         </where>
     </select>
 
+    <select id="getAddTeamUserList" resultType="com.model.User">
+        select `id`,
+               `name`,
+               `gender`,
+               `age`,
+               `password`,
+               `phone`,
+               `address`,
+               `email`,
+               `role_id`
+        from user a
+        <!--不是已经添加的成员-->
+        where a.id not in (SELECT user_id from team_user s where s.team_id = #{teamId})
+        <!--不是队长-->
+        and a.id not in (Select team_user_id from team d where d.id = #{teamId})
+        <!--必须是会员-->
+        and a.role_id = 2
+    </select>
+
+<!--@Deprecated-->
+    <select id="getTeamUserList" resultType="com.model.User">
+        select `id`,
+               `name`,
+               `gender`,
+               `age`,
+               `password`,
+               `phone`,
+               `address`,
+               `email`,
+               `role_id`
+        from user a
+        where a.id in (SELECT user_id from team_user s where s.team_id = #{teamId})
+    </select>
+
     <insert id="save" parameterType="com.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into user(
         <trim suffixOverrides=",">
-            <if test="name != null">`name`,</if>
-            <if test="phone != null">`phone`,</if>
-            <if test="password != null">`password`,</if>
-            <if test="score != null">`score`,</if>
-            <if test="roleId != null">`role_id`</if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="gender != null">
+                `gender`,
+            </if>
+            <if test="age != null">
+                `age`,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="phone != null">
+                `phone`,
+            </if>
+            <if test="address != null">
+                `address`,
+            </if>
+            <if test="email != null">
+                `email`,
+            </if>
+            <if test="roleId != null">
+                `role_id`
+            </if>
         </trim>
         )
         values (
         <trim suffixOverrides=",">
-            <if test="name != null">#{name},</if>
-            <if test="phone != null">#{phone},</if>
-            <if test="password != null">#{password},</if>
-            <if test="score != null">#{score},</if>
-            <if test="roleId != null">#{roleId}</if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="gender != null">
+                #{gender},
+            </if>
+            <if test="age != null">
+                #{age},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="phone != null">
+                #{phone},
+            </if>
+            <if test="address != null">
+                #{address},
+            </if>
+            <if test="email != null">
+                #{email},
+            </if>
+            <if test="roleId != null">
+                #{roleId}
+            </if>
         </trim>
         )
     </insert>
@@ -81,19 +187,36 @@
     <update id="update" parameterType="com.model.User">
         update user
         <set>
-            <if test="name != null">`name` = #{name}
+            <if test="name != null">
+                `name` = #{name}
                 ,
             </if>
-            <if test="phone != null">`phone` = #{phone}
+            <if test="gender != null">
+                `gender` = #{gender}
                 ,
             </if>
-            <if test="password != null">`password` = #{password}
+            <if test="age != null">
+                `age` = #{age}
                 ,
             </if>
-            <if test="score != null">`score` = #{score}
+            <if test="password != null">
+                `password` = #{password}
                 ,
             </if>
-            <if test="roleId != null">`role_id` = #{roleId}
+            <if test="phone != null">
+                `phone` = #{phone}
+                ,
+            </if>
+            <if test="address != null">
+                `address` = #{address}
+                ,
+            </if>
+            <if test="email != null">
+                `email` = #{email}
+                ,
+            </if>
+            <if test="roleId != null">
+                `role_id` = #{roleId}
             </if>
         </set>
         where id = #{id}
@@ -104,5 +227,4 @@
         from user
         where id = #{id}
     </delete>
-
 </mapper>

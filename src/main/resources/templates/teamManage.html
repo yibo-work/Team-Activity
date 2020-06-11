@@ -30,8 +30,8 @@
             <div class="layui-card">
 
                 <div class="layui-card-header">
-                    <button class="layui-btn" onclick="xadmin.open('添加团队','/teamAdd',500,700)">
-                        <i class="layui-icon"></i>添加团队
+                    <button class="layui-btn" onclick="xadmin.open('创建团队','/teamAdd',500,300)">
+                        <i class="layui-icon"></i>创建团队
                     </button>
                 </div>
                 <div class="layui-card-body">
@@ -40,7 +40,6 @@
                         <tr>
                             <th>序号</th>
                             <th>团队名</th>
-                            <th>团长id</th>
                             <th>团队创建时间</th>
                             <th>团费</th>
                             <th>操作</th>
@@ -50,21 +49,23 @@
                         <tr v-for="team,i in pageInfo.list">
                             <td v-text="i+1"></td>
                             <td v-text="team.name"></td>
-                            <td v-text="team.teamUserId"></td>
                             <td v-text="team.createTime"></td>
                             <td v-text="team.teamFee"></td>
                             <td class="td-manage">
                                 <button @click="editTeam(team.id)"
                                         class="layui-btn layui-btn-warm"
-                                        id="editTeam"
-                                        onclick="xadmin.open('编辑团队','/teamEdit',500,700)">
+                                        onclick="xadmin.open('编辑团队','/teamEdit',500,300)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
-                                <button @click="viewTeam(team.id)"
-                                        class="layui-btn"
-                                        id="viewTeam"
-                                        onclick="xadmin.open('团队详情','/teamView',500,700)">
-                                    <i class="layui-icon layui-icon-console"></i>详情
+                                <button @click="addTeamFee(team.id)"
+                                        class="layui-btn layui-btn-primary"
+                                        onclick="xadmin.open('交纳团费','/addTeamFee',500,300)">
+                                    <i class="layui-icon">&#xe631;</i>交纳团费
+                                </button>
+                                <button @click="updateTeamUser(team.id)"
+                                        class="layui-btn layui-btn-warm"
+                                        onclick="xadmin.open('团队成员管理','/teamUserManage', 1200,1000,true)">
+                                    <i class="layui-icon"></i>团队成员管理
                                 </button>
                                 <button @click="delTeam(team.id)"
                                         class="layui-btn layui-btn-danger"
@@ -135,7 +136,7 @@
              * 删除团队
              */
             delTeam: function (id) {
-                layer.confirm('确认要删除吗？',
+                layer.confirm('确认要删除吗，这会删除关于这个团队的所有信息？',
                     function () {
                         //发异步删除数据
                         $.ajax({
@@ -172,12 +173,17 @@
             },
             /**
              *
-             * 团队详情
+             * 交纳团费
              */
-            viewTeam: function (viewTeamId) {
-                //把要修改的viewTeamId存到sessionStorage中
-                sessionStorage.setItem("viewTeamId", viewTeamId);
+            addTeamFee: function (addTeamFeeId) {
+                //把要修改的addTeamFeeId存到sessionStorage中
+                sessionStorage.setItem("addTeamFeeId", addTeamFeeId);
+            },
+            updateTeamUser: function (updateTeamUserId) {
+                //把要修改的updateTeamUserId存到sessionStorage中
+                sessionStorage.setItem("updateTeamUserId", updateTeamUserId);
             }
+
         },
         created: function () {
             this.getPage(1, 5);

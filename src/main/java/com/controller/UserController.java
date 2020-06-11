@@ -84,6 +84,26 @@ public class UserController {
     }
 
     /**
+     * 查询团队会员页面
+     *
+     * @return 分页会员数据
+     */
+    @GetMapping("/teamUserPage")
+    @Deprecated
+    public PageInfo<User> teamUserPage() {
+        return userService.getTeamUserList(new RequestParamsUtil());
+    }
+
+    /**
+     * 查询未在团队会员列表
+     */
+    @GetMapping("/getAddTeamUserList")
+    public ResultVO getAddTeamUserList() {
+        List<User> userList = userService.getAddTeamUserList(new RequestParamsUtil().getParameters());
+        return ResultVOUtil.success(userList);
+    }
+
+    /**
      * 通过id查询单个会员
      */
     @GetMapping("/findById")

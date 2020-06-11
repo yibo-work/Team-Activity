@@ -76,4 +76,68 @@ public class PageController {
         return "myTeamManage";
     }
 
+    @GetMapping("/teamManage")
+    public String teamManage() {
+        return "teamManage";
+    }
+
+    @GetMapping("/addTeamFee")
+    public String addTeamFee() {
+        return "addTeamFee";
+    }
+
+    @GetMapping("/teamAdd")
+    public String teamAdd() {
+        return "teamAdd";
+    }
+
+    @GetMapping("/teamEdit")
+    public String teamEdit() {
+        return "teamEdit";
+    }
+
+    @GetMapping("/teamUserManage")
+    public String teamUserManage() {
+        return "teamUserManage";
+    }
+
+    @GetMapping("/teamUserAdd")
+    public String teamUserAdd() {
+        return "teamUserAdd";
+    }
+
+
+    /**
+     * 活动管理
+     */
+    @GetMapping("/activityManage")
+    public String activityManage() {
+        return "activityManage";
+    }
+
+    @GetMapping("/activityAdd")
+    public String activityAdd() {
+        return "activityAdd";
+    }
+
+    @GetMapping("/activityEdit")
+    public String activityEdit() {
+        return "activityEdit";
+    }
+
+    @GetMapping("/activityUserManage")
+    public String activityUserManage() {
+        return "activityUserManage";
+    }
+
+    @GetMapping("/activityUserAdd")
+    public String activityUserAdd() {
+        return "activityUserAdd";
+    }
+
+    @GetMapping("/activityUserEdit")
+    public String activityUserEdit() {
+        return "activityUserEdit";
+    }
+
 }

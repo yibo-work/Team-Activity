@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.TeamDao">
+    <select id="findById" resultType="com.model.Team">
+        select `id`, `name`, `team_user_id`, `create_time`, `team_fee`
+        from team
+        where id = #{id}
+    </select>
+
+    <select id="findByMap" resultType="com.model.Team">
+        select `id`,`name`,`team_user_id`,`create_time`,`team_fee` from team
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="teamUserId != null and teamUserId != ''">
+                and team_user_id = #{teamUserId}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                and create_time = #{createTime}
+            </if>
+            <if test="teamFee != null and teamFee != ''">
+                and team_fee = #{teamFee}
+            </if>
+        </where>
+    </select>
+
+    <select id="list" resultType="com.model.Team">
+        select `id`,`name`,`team_user_id`,`create_time`,`team_fee` from team
+        <where>
+            <if test="id != null and id != ''">
+                and id =
+                #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name =
+                #{name}
+            </if>
+            <if test="teamUserId != null and teamUserId != ''">
+                and team_user_id =
+                #{teamUserId}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                and create_time =
+                #{createTime}
+            </if>
+            <if test="teamFee != null and teamFee != ''">
+                and team_fee =
+                #{teamFee}
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.model.Team" useGeneratedKeys="true" keyProperty="id">
+        insert into team(
+        <trim suffixOverrides=",">
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="teamUserId != null">
+                `team_user_id`,
+            </if>
+            <if test="createTime != null">
+                `create_time`,
+            </if>
+            <if test="teamFee != null">
+                `team_fee`
+            </if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="teamUserId != null">
+                #{teamUserId},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="teamFee != null">
+                #{teamFee}
+            </if>
+        </trim>
+        )
+    </insert>
+
+    <update id="update" parameterType="com.model.Team">
+        update team
+        <set>
+            <if test="name != null">
+                `name` = #{name}
+                ,
+            </if>
+            <if test="teamUserId != null">
+                `team_user_id` = #{teamUserId}
+                ,
+            </if>
+            <if test="createTime != null">
+                `create_time` = #{createTime}
+                ,
+            </if>
+            <if test="teamFee != null">
+                `team_fee` = #{teamFee}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete
+        from team
+        where id = #{id};
+
+        delete
+        from team_user where team_id = #{id};
+
+        delete from activity where team_id = #{id};
+
+        delete from activity_user where activity_id IN (SELECT id from activity  where team_id = #{id});
+    </delete>
+</mapper>

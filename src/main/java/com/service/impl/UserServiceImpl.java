@@ -83,4 +83,22 @@ public class UserServiceImpl implements UserService {
         return userDao.deleteById(id);
     }
 
+    /**
+     * 查询未在团队会员列表
+     */
+    @Override
+    public List<User> getAddTeamUserList(Map<String, Object> parameters) {
+        return userDao.getAddTeamUserList(parameters);
+    }
+
+    /**
+     * 查询团队会员列表
+     */
+    @Override
+    @Deprecated
+    public PageInfo<User> getTeamUserList(RequestParamsUtil requestParamsUtil) {
+        PageHelper.startPage(requestParamsUtil.getPageNo(), requestParamsUtil.getPageSize());
+        return new PageInfo<>(userDao.getTeamUserList(requestParamsUtil.getParameters()));
+    }
+
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.TeamUserDao">
+    <select id="findById" resultType="com.model.TeamUser">
+        select a.`id`, `team_id`, `user_id`,u.name user_name
+        from team_user a left join user u on a.user_id = u.id
+        where a.id = #{id}
+    </select>
+
+    <select id="findByMap" resultType="com.model.TeamUser">
+        select a.`id`, `team_id`, `user_id`,u.name user_name
+        from team_user a left join user u on a.user_id = u.id
+        <where>
+            <if test="id != null and id != ''">
+                and a.id = #{id}
+            </if>
+            <if test="teamId != null and teamId != ''">
+                and team_id = #{teamId}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="list" resultType="com.model.TeamUser">
+         select a.`id`, `team_id`, `user_id`,u.name user_name
+        from team_user a left join user u on a.user_id = u.id
+        <where>
+            <if test="id != null and id != ''">
+                and a.id =
+                #{id}
+            </if>
+            <if test="teamId != null and teamId != ''">
+                and team_id =
+                #{teamId}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id =
+                #{userId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.model.TeamUser" useGeneratedKeys="true" keyProperty="id">
+        insert into team_user(
+        <trim suffixOverrides=",">
+            <if test="teamId != null">
+                `team_id`,
+            </if>
+            <if test="userId != null">
+                `user_id`
+            </if>
+        </trim>
+        )
+        values (
+        <trim suffixOverrides=",">
+            <if test="teamId != null">
+                #{teamId},
+            </if>
+            <if test="userId != null">
+                #{userId}
+            </if>
+        </trim>
+        )
+    </insert>
+
+    <update id="update" parameterType="com.model.TeamUser">
+        update team_user
+        <set>
+            <if test="teamId != null">
+                `team_id` = #{teamId}
+                ,
+            </if>
+            <if test="userId != null">
+                `user_id` = #{userId}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete
+        from team_user
+        where id = #{id}
+    </delete>
+</mapper>

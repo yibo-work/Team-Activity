@@ -2,18 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dao.ActivityDao">
-
     <select id="findById" resultType="com.model.Activity">
-        select `id`, `name`, `content`
+        select `id`,
+               `team_id`,
+               `name`,
+               `content`,
+               `start_time`,
+               `budget`,
+               `avg_budget`,
+               `amount`,
+               `avg_fee`,
+               `end_time`
         from activity
         where id = #{id}
     </select>
 
     <select id="findByMap" resultType="com.model.Activity">
-        select `id`, `name`, `content` from activity
+        select `id`,`team_id`,`name`,`content`,`start_time`,`budget`,`avg_budget`,`amount`,`avg_fee`,`end_time` from
+        activity
         <where>
             <if test="id != null and id != ''">
                 and id = #{id}
+            </if>
+            <if test="teamId != null and teamId != ''">
+                and team_id = #{teamId}
             </if>
             <if test="name != null and name != ''">
                 and name = #{name}
@@ -21,17 +33,70 @@
             <if test="content != null and content != ''">
                 and content = #{content}
             </if>
+            <if test="startTime != null and startTime != ''">
+                and start_time = #{startTime}
+            </if>
+            <if test="budget != null and budget != ''">
+                and budget = #{budget}
+            </if>
+            <if test="avgBudget != null and avgBudget != ''">
+                and avg_budget = #{avgBudget}
+            </if>
+            <if test="amount != null and amount != ''">
+                and amount = #{amount}
+            </if>
+            <if test="avgFee != null and avgFee != ''">
+                and avg_fee = #{avgFee}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and end_time = #{endTime}
+            </if>
         </where>
     </select>
 
     <select id="list" resultType="com.model.Activity">
-        select `id`, `name`, `content` from activity
+        select `id`,`team_id`,`name`,`content`,`start_time`,`budget`,`avg_budget`,`amount`,`avg_fee`,`end_time` from
+        activity
         <where>
-            <if test="id != null and id != ''">and id =
+            <if test="id != null and id != ''">
+                and id =
                 #{id}
             </if>
-            <if test="name != null and name != ''">and name =
+            <if test="teamId != null and teamId != ''">
+                and team_id =
+                #{teamId}
+            </if>
+            <if test="name != null and name != ''">
+                and name =
                 #{name}
+            </if>
+            <if test="content != null and content != ''">
+                and content =
+                #{content}
+            </if>
+            <if test="startTime != null and startTime != ''">
+                and start_time =
+                #{startTime}
+            </if>
+            <if test="budget != null and budget != ''">
+                and budget =
+                #{budget}
+            </if>
+            <if test="avgBudget != null and avgBudget != ''">
+                and avg_budget =
+                #{avgBudget}
+            </if>
+            <if test="amount != null and amount != ''">
+                and amount =
+                #{amount}
+            </if>
+            <if test="avgFee != null and avgFee != ''">
+                and avg_fee =
+                #{avgFee}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and end_time =
+                #{endTime}
             </if>
         </where>
     </select>
@@ -39,14 +104,64 @@
     <insert id="save" parameterType="com.model.Activity" useGeneratedKeys="true" keyProperty="id">
         insert into activity(
         <trim suffixOverrides=",">
-            <if test="name != null">`name`,</if>
-            <if test="content != null">`content`</if>
+            <if test="teamId != null">
+                `team_id`,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="content != null">
+                `content`,
+            </if>
+            <if test="startTime != null">
+                `start_time`,
+            </if>
+            <if test="budget != null">
+                `budget`,
+            </if>
+            <if test="avgBudget != null">
+                `avg_budget`,
+            </if>
+            <if test="amount != null">
+                `amount`,
+            </if>
+            <if test="avgFee != null">
+                `avg_fee`,
+            </if>
+            <if test="endTime != null">
+                `end_time`
+            </if>
         </trim>
         )
         values (
         <trim suffixOverrides=",">
-            <if test="name != null">#{name},</if>
-            <if test="content != null">#{content}</if>
+            <if test="teamId != null">
+                #{teamId},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="budget != null">
+                #{budget},
+            </if>
+            <if test="avgBudget != null">
+                #{avgBudget},
+            </if>
+            <if test="amount != null">
+                #{amount},
+            </if>
+            <if test="avgFee != null">
+                #{avgFee},
+            </if>
+            <if test="endTime != null">
+                #{endTime}
+            </if>
         </trim>
         )
     </insert>
@@ -54,9 +169,40 @@
     <update id="update" parameterType="com.model.Activity">
         update activity
         <set>
-            <if test="name != null">`name` = #{name},
+            <if test="teamId != null">
+                `team_id` = #{teamId}
+                ,
             </if>
-            <if test="content != null">`content` = #{content}
+            <if test="name != null">
+                `name` = #{name}
+                ,
+            </if>
+            <if test="content != null">
+                `content` = #{content}
+                ,
+            </if>
+            <if test="startTime != null">
+                `start_time` = #{startTime}
+                ,
+            </if>
+            <if test="budget != null">
+                `budget` = #{budget}
+                ,
+            </if>
+            <if test="avgBudget != null">
+                `avg_budget` = #{avgBudget}
+                ,
+            </if>
+            <if test="amount != null">
+                `amount` = #{amount}
+                ,
+            </if>
+            <if test="avgFee != null">
+                `avg_fee` = #{avgFee}
+                ,
+            </if>
+            <if test="endTime != null">
+                `end_time` = #{endTime}
             </if>
         </set>
         where id = #{id}
@@ -67,5 +213,4 @@
         from activity
         where id = #{id}
     </delete>
-
 </mapper>

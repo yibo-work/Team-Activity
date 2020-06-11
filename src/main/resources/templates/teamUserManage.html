@@ -30,7 +30,7 @@
             <div class="layui-card">
 
                 <div class="layui-card-header">
-                    <button class="layui-btn" onclick="xadmin.open('添加团队成员','/teamUserAdd',500,700)">
+                    <button class="layui-btn" onclick="xadmin.open('添加团队成员','/teamUserAdd',500,300)">
                         <i class="layui-icon"></i>添加团队成员
                     </button>
                 </div>
@@ -39,29 +39,21 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>团队id</th>
-                            <th>队员id</th>
+                            <th>队员名称</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="teamUser,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                            <td v-text="teamUser.teamId"></td>
-                            <td v-text="teamUser.userId"></td>
+                            <td v-text="teamUser.userName"></td>
                             <td class="td-manage">
-                                <button @click="editTeamUser(teamUser.id)"
+                                <!--<button @click="editTeamUser(teamUser.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editTeamUser"
                                         onclick="xadmin.open('编辑团队成员','/teamUserEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
-                                </button>
-                                <button @click="viewTeamUser(teamUser.id)"
-                                        class="layui-btn"
-                                        id="viewTeamUser"
-                                        onclick="xadmin.open('团队成员详情','/teamUserView',500,700)">
-                                    <i class="layui-icon layui-icon-console"></i>详情
-                                </button>
+                                </button>-->
                                 <button @click="delTeamUser(teamUser.id)"
                                         class="layui-btn layui-btn-danger"
                                         id="delTeamUser">
@@ -104,8 +96,7 @@
 </body>
 <script type="text/javascript">
 
-    layui.use(['form'], function () {
-    });
+    var updateTeamUserId = sessionStorage.getItem("updateTeamUserId");
 
     vm = new Vue({
         el: "#vmTeamUser",
@@ -122,6 +113,8 @@
                 } else {
                     url += "&pageSize=" + pageSize;
                 }
+
+                url += "&teamId=" + updateTeamUserId;
 
                 $.getJSON(url, function (data) {
                     _this.pageInfo = data;
@@ -165,19 +158,15 @@
             editTeamUser: function (editTeamUserId) {
                 //把要修改的editTeamUserId存到sessionStorage中
                 sessionStorage.setItem("editTeamUserId", editTeamUserId);
-            },
-            /**
-             *
-             * 团队成员详情
-             */
-            viewTeamUser: function (viewTeamUserId) {
-                //把要修改的viewTeamUserId存到sessionStorage中
-                sessionStorage.setItem("viewTeamUserId", viewTeamUserId);
             }
         },
         created: function () {
             this.getPage(1, 5);
         }
+    });
+
+
+    layui.use(['form'], function () {
     });
 
 </script>

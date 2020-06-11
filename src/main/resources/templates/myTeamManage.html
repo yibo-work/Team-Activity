@@ -26,12 +26,12 @@
 </div>
 <div class="layui-fluid">
     <div class="layui-row layui-col-space15">
-        <div class="layui-col-md12" id="vmTeamUser">
+        <div class="layui-col-md12" id="vmTeam">
             <div class="layui-card">
 
                 <div class="layui-card-header">
-                    <button class="layui-btn" onclick="xadmin.open('添加团队成员','/teamUserAdd',500,700)">
-                        <i class="layui-icon"></i>添加团队成员
+                    <button class="layui-btn" onclick="xadmin.open('添加团队','/teamAdd',500,700)">
+                        <i class="layui-icon"></i>发起团队
                     </button>
                 </div>
                 <div class="layui-card-body">
@@ -39,38 +39,42 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>团队id</th>
-                            <th>队员id</th>
+                            <th>团队名</th>
+                            <th>团长id</th>
+                            <th>团队创建时间</th>
+                            <th>团费</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="teamUser,i in pageInfo.list">
+                        <tr v-for="team,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                            <td v-text="teamUser.teamId"></td>
-                            <td v-text="teamUser.userId"></td>
+                            <td v-text="team.name"></td>
+                            <td v-text="team.teamUserId"></td>
+                            <td v-text="team.createTime"></td>
+                            <td v-text="team.teamFee"></td>
                             <td class="td-manage">
-                                <button @click="editTeamUser(teamUser.id)"
+                                <button @click="editTeam(team.id)"
                                         class="layui-btn layui-btn-warm"
-                                        id="editTeamUser"
-                                        onclick="xadmin.open('编辑团队成员','/teamUserEdit',500,700)">
+                                        id="editTeam"
+                                        onclick="xadmin.open('编辑团队','/teamEdit',500,700)">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
-                                <button @click="viewTeamUser(teamUser.id)"
+                                <button @click="viewTeam(team.id)"
                                         class="layui-btn"
-                                        id="viewTeamUser"
-                                        onclick="xadmin.open('团队成员详情','/teamUserView',500,700)">
+                                        id="viewTeam"
+                                        onclick="xadmin.open('团队详情','/teamView',500,700)">
                                     <i class="layui-icon layui-icon-console"></i>详情
                                 </button>
-                                <button @click="delTeamUser(teamUser.id)"
+                                <button @click="delTeam(team.id)"
                                         class="layui-btn layui-btn-danger"
-                                        id="delTeamUser">
+                                        id="delTeam">
                                     <i class="layui-icon">&#xe640;</i>删除
                                 </button>
                             </td>
                         </tr>
                         <tr v-if="pageInfo.total == 0">
-                            <td colspan="100" style="text-align: center">暂无团队成员信息！</td>
+                            <td colspan="100" style="text-align: center">暂无团队信息！</td>
                         </tr>
                         </tbody>
                     </table>
@@ -108,14 +112,14 @@
     });
 
     vm = new Vue({
-        el: "#vmTeamUser",
+        el: "#vmTeam",
         data: {
             pageInfo: {}
         },
         methods: {
             getPage: function (pageNum, pageSize) {
                 var _this = this;
-                var url = "/teamUser/page?pageNum=" + pageNum;
+                var url = "/team/page?pageNum=" + pageNum;
 
                 if (!pageSize) {
                     url += "&pageSize=" + _this.pageInfo.pageSize;
@@ -128,14 +132,14 @@
                 });
             },
             /**
-             * 删除团队成员
+             * 删除团队
              */
-            delTeamUser: function (id) {
+            delTeam: function (id) {
                 layer.confirm('确认要删除吗？',
                     function () {
                         //发异步删除数据
                         $.ajax({
-                            url: "/teamUser/deleteById",
+                            url: "/team/deleteById",
                             data: {
                                 id: id
                             },
@@ -160,19 +164,19 @@
             },
             /**
              *
-             * 修改团队成员
+             * 修改团队
              */
-            editTeamUser: function (editTeamUserId) {
-                //把要修改的editTeamUserId存到sessionStorage中
-                sessionStorage.setItem("editTeamUserId", editTeamUserId);
+            editTeam: function (editTeamId) {
+                //把要修改的editTeamId存到sessionStorage中
+                sessionStorage.setItem("editTeamId", editTeamId);
             },
             /**
              *
-             * 团队成员详情
+             * 团队详情
              */
-            viewTeamUser: function (viewTeamUserId) {
-                //把要修改的viewTeamUserId存到sessionStorage中
-                sessionStorage.setItem("viewTeamUserId", viewTeamUserId);
+            viewTeam: function (viewTeamId) {
+                //把要修改的viewTeamId存到sessionStorage中
+                sessionStorage.setItem("viewTeamId", viewTeamId);
             }
         },
         created: function () {

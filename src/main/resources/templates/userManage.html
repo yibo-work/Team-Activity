@@ -64,15 +64,15 @@
                             <td v-if="user.roleId === 1">管理员</td>
                             <td v-else>会员</td>
                             <td class="td-manage">
-                                <button @click="editUser(user.id)"
-                                        class="layui-btn layui-btn-warm"
+                                <button @click="editUser(user.id)" class="layui-btn layui-btn-warm"
                                         id="editUser"
-                                        onclick="xadmin.open('编辑会员','/userEdit',500,700)">
+                                        onclick="xadmin.open('编辑会员','/userEdit',500,700)"
+                                        v-if="user.name !== 'admin'">
                                     <i class="layui-icon">&#xe631;</i>编辑
                                 </button>
-                                <button @click="delUser(user.id)"
-                                        class="layui-btn layui-btn-danger"
-                                        id="delUser">
+                                <button @click="delUser(user.id)" class="layui-btn layui-btn-danger"
+                                        id="delUser"
+                                        v-if="user.name !== 'admin'">
                                     <i class="layui-icon">&#xe640;</i>删除
                                 </button>
                             </td>
