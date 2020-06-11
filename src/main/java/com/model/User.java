@@ -1,16 +1,16 @@
 package com.model;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
- * 用户
+ * 会员
+ *
  * @author Clrvn
  */
 @Data
-public class User implements Serializable{
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,12 +20,12 @@ public class User implements Serializable{
     private Integer id;
 
     /**
-     * 用户名
+     * 会员名
      */
     private String name;
 
     /**
-     * 角色编号，1、男 0、女
+     * 性别 1、男 0、女
      */
     private Integer gender;
 

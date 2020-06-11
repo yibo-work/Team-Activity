@@ -1,16 +1,16 @@
 package com.model;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 活动追加费用
+ *
  * @author Clrvn
  */
 @Data
-public class Append implements Serializable{
+public class Append implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -39,21 +39,21 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>团队名</th>
-                                                                                                <th>团长id</th>
-                                                                                                <th>团队创建时间</th>
-                                                                                                <th>团费</th>
-                                                                        <th>操作</th>
+                            <th>团队名</th>
+                            <th>团长id</th>
+                            <th>团队创建时间</th>
+                            <th>团费</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="team,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="team.name"></td>
-                                                                                                            <td v-text="team.teamUserId"></td>
-                                                                                                            <td v-text="team.createTime"></td>
-                                                                                                            <td v-text="team.teamFee"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="team.name"></td>
+                            <td v-text="team.teamUserId"></td>
+                            <td v-text="team.createTime"></td>
+                            <td v-text="team.teamFee"></td>
+                            <td class="td-manage">
                                 <button @click="editTeam(team.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editTeam"
@@ -136,31 +136,31 @@
              */
             delTeam: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/team/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/team/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *

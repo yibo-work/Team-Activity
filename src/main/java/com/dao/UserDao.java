@@ -7,38 +7,39 @@ import java.util.Map;
 
 
 /**
- * 用户DAO
+ * 会员DAO
+ *
  * @author Clrvn
  */
 public interface UserDao {
 
     /**
-     * 通过id查询单个用户
+     * 通过id查询单个会员
      */
     User findById(Integer id);
 
     /**
-     * 通过map查询单个用户
+     * 通过map查询单个会员
      */
     User findByMap(Map<String, Object> map);
 
     /**
-     * 查询用户列表
+     * 查询会员列表
      */
     List<User> list(Map<String, Object> map);
 
     /**
-     * 新增用户
+     * 新增会员
      */
     int save(User user);
 
     /**
-     * 修改用户
+     * 修改会员
      */
     int update(User user);
 
     /**
-     * 删除用户
+     * 删除会员
      */
     int deleteById(Integer id);
 

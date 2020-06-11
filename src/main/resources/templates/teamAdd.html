@@ -17,43 +17,43 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <form class="layui-form">
-                                                                                                    <div class="layui-form-item">
-                            <label class="layui-form-label" for="name">
-                                <span class="x-red">*</span>团队名
-                            </label>
-                            <div class="layui-input-block">
-                                <div class="layui-input-inline layui-show-xs-block">
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="name">
+                    <span class="x-red">*</span>团队名
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
 
-                                                                                                                <input class="layui-input" id="name" name="name"
-                                               type="text">
-                                                                    </div>
-                            </div>
-                        </div>
-                                                                                                            <div class="layui-form-item">
-                            <label class="layui-form-label" for="teamUserId">
-                                <span class="x-red">*</span>团长id
-                            </label>
-                            <div class="layui-input-block">
-                                <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="name" name="name"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="teamUserId">
+                    <span class="x-red">*</span>团长id
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
 
-                                                                                                                <input class="layui-input" id="teamUserId" name="teamUserId"
-                                               type="text">
-                                                                    </div>
-                            </div>
-                        </div>
-                                                                                                                                                                            <div class="layui-form-item">
-                            <label class="layui-form-label" for="teamFee">
-                                <span class="x-red">*</span>团费
-                            </label>
-                            <div class="layui-input-block">
-                                <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="teamUserId" name="teamUserId"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="teamFee">
+                    <span class="x-red">*</span>团费
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
 
-                                                                                                                <input class="layui-input" id="teamFee" name="teamFee"
-                                               type="text">
-                                                                    </div>
-                            </div>
-                        </div>
-                                                            <div class="layui-form-item">
+                        <input class="layui-input" id="teamFee" name="teamFee"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-filter="add" lay-submit="">
                     确认添加
@@ -65,39 +65,39 @@
 <script charset="UTF-8" type="text/javascript">
 
     layui.use(['form', 'layer'],
-            function () {
-                var form = layui.form,
-                        layer = layui.layer;
+        function () {
+            var form = layui.form,
+                layer = layui.layer;
 
-                //监听提交
-                form.on('submit(add)',
-                        function (data) {
-                            //发异步，把数据提交给java
-                            $.ajax({
-                                url: "/team/save",
-                                data: JSON.stringify(data.field),
-                                dataType: "json",
-                                type: "post",
-                                contentType: "application/json",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg("增加成功", {icon: 6, time: 500},
-                                                function () {
-                                                    //关闭当前frame
-                                                    xadmin.close();
-                                                    // 可以对父窗口进行刷新
-                                                    xadmin.father_reload();
-                                                });
-                                    } else {
-                                        layer.alert(result.msg);
-                                    }
-                                }
-                            });
+            //监听提交
+            form.on('submit(add)',
+                function (data) {
+                    //发异步，把数据提交给java
+                    $.ajax({
+                        url: "/team/save",
+                        data: JSON.stringify(data.field),
+                        dataType: "json",
+                        type: "post",
+                        contentType: "application/json",
+                        success: function (result) {
+                            if (result.code === 200) {
+                                layer.msg("增加成功", {icon: 6, time: 500},
+                                    function () {
+                                        //关闭当前frame
+                                        xadmin.close();
+                                        // 可以对父窗口进行刷新
+                                        xadmin.father_reload();
+                                    });
+                            } else {
+                                layer.alert(result.msg);
+                            }
+                        }
+                    });
 
-                            return false;
-                        });
+                    return false;
+                });
 
-            });
+        });
 </script>
 </body>
 </html>

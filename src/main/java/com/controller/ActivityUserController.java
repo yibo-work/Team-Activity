@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 活动成员Controller
+ *
  * @author Clrvn
  */
 @RestController
@@ -24,6 +25,7 @@ public class ActivityUserController {
 
     /**
      * 查询活动成员页面
+     *
      * @return 分页活动成员数据
      */
     @GetMapping("/page")
@@ -45,7 +47,7 @@ public class ActivityUserController {
      */
     @GetMapping("/findById")
     public ResultVO findById(@RequestParam(value = "id") Integer id) {
-        ActivityUser activityUser =activityUserService.findById(id);
+        ActivityUser activityUser = activityUserService.findById(id);
         return ResultVOUtil.success(activityUser);
     }
 
@@ -54,7 +56,7 @@ public class ActivityUserController {
      */
     @GetMapping("/findByMap")
     public ResultVO findByMap() {
-        ActivityUser activityUser =activityUserService.findByMap(new RequestParamsUtil().getParameters());
+        ActivityUser activityUser = activityUserService.findByMap(new RequestParamsUtil().getParameters());
         return ResultVOUtil.success(activityUser);
     }
 
@@ -63,10 +65,10 @@ public class ActivityUserController {
      */
     @PostMapping("/save")
     public ResultVO save(@RequestBody ActivityUser activityUser) {
-        try{
+        try {
             activityUserService.save(activityUser);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("添加失败！");
         }
     }
@@ -76,10 +78,10 @@ public class ActivityUserController {
      */
     @PutMapping("/update")
     public ResultVO update(@RequestBody ActivityUser activityUser) {
-        try{
+        try {
             activityUserService.update(activityUser);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("修改失败！");
         }
 
@@ -90,10 +92,10 @@ public class ActivityUserController {
      */
     @DeleteMapping("/deleteById")
     public ResultVO deleteById(@RequestParam(value = "id") Integer id) {
-        try{
+        try {
             activityUserService.deleteById(id);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("删除失败！");
         }
     }

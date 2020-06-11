@@ -1,10 +1,10 @@
 package com.service.impl;
 
+import com.dao.UserDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.model.User;
 import com.service.UserService;
-import com.dao.UserDao;
 import com.utils.RequestParamsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 用户ServiceImpl
+ * 会员ServiceImpl
+ *
  * @author Clrvn
  */
 @Service
@@ -23,8 +24,9 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     /**
-     * 查询用户页面
-     * @return 分页用户数据
+     * 查询会员页面
+     *
+     * @return 分页会员数据
      */
     @Override
     public PageInfo<User> page(RequestParamsUtil requestParamsUtil) {
@@ -33,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 查询用户列表
+     * 查询会员列表
      */
     @Override
     public List<User> list(Map<String, Object> map) {
@@ -42,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
 
     /**
-     * 通过id查询单个用户
+     * 通过id查询单个会员
      */
     @Override
     public User findById(Integer id) {
@@ -50,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 通过map查询单个用户
+     * 通过map查询单个会员
      */
     @Override
     public User findByMap(Map<String, Object> map) {
@@ -58,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 新增用户
+     * 新增会员
      */
     @Override
     public int save(User user) {
@@ -66,7 +68,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 修改用户
+     * 修改会员
      */
     @Override
     public int update(User user) {
@@ -74,7 +76,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 删除用户
+     * 删除会员
      */
     @Override
     public int deleteById(Integer id) {

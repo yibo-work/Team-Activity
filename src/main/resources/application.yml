@@ -2,7 +2,7 @@ spring:
   # database
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/self_service_ordering?serverTimezone=Asia/Shanghai&useSSL=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://127.0.0.1:3306/team_activity?serverTimezone=Asia/Shanghai&useSSL=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
     password: root
     username: root
   mvc:
@@ -11,7 +11,7 @@ spring:
     static-locations: classpath:/static
 #port
 server:
-  port: 9013
+  port: 9014
   servlet:
     session:
       timeout: -1

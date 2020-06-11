@@ -1,16 +1,16 @@
 package com.model;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 活动成员
+ *
  * @author Clrvn
  */
 @Data
-public class ActivityUser implements Serializable{
+public class ActivityUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

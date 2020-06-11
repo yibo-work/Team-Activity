@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>添加会员</title>
+    <title>添加活动表</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -18,83 +18,112 @@
     <div class="layui-row">
         <form class="layui-form">
             <div class="layui-form-item">
+                <label class="layui-form-label" for="teamId">
+                    <span class="x-red">*</span>团队id
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+
+                        <input class="layui-input" id="teamId" name="teamId"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label" for="name">
-                    <span class="x-red">*</span>会员名
+                    <span class="x-red">*</span>活动名称
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="name" lay-verify="required" name="name"
+
+                        <input class="layui-input" id="name" name="name"
                                type="text">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label" for="gender">
-                    <span class="x-red">*</span>性别
+                <label class="layui-form-label" for="content">
+                    <span class="x-red">*</span>活动内容
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <select id="gender" name="gender">
-                            <option value="0">女</option>
-                            <option value="1">男</option>
-                        </select>
+
+                                                                            <textarea class="layui-textarea"
+                                                                                      id="content" lay-verify="required"
+                                                                                      name="content"
+                                                                                      rows="4"></textarea>
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label" for="age">
-                    <span class="x-red">*</span>年龄
+                <label class="layui-form-label" for="startTime">
+                    <span class="x-red">*</span>活动开始时间
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="age" name="age"
-                               type="number">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="phone">
-                    <span class="x-red">*</span>电话
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="phone" name="phone"
+
+                        <input class="layui-input" id="startTime" name="startTime"
                                type="text">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label" for="address">
-                    <span class="x-red">*</span>地址
+                <label class="layui-form-label" for="budget">
+                    <span class="x-red">*</span>总预算
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="address" name="address"
+
+                        <input class="layui-input" id="budget" name="budget"
                                type="text">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label" for="email">
-                    <span class="x-red">*</span>邮箱
+                <label class="layui-form-label" for="avgBudget">
+                    <span class="x-red">*</span>个人预算
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="email" name="email"
+
+                        <input class="layui-input" id="avgBudget" name="avgBudget"
                                type="text">
                     </div>
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label" for="roleId">
-                    <span class="x-red">*</span>角色
+                <label class="layui-form-label" for="amount">
+                    <span class="x-red">*</span>总费用
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <select id="roleId" name="roleId">
-                            <option value="2">会员</option>
-                            <option value="1">管理员</option>
-                        </select>
+
+                        <input class="layui-input" id="amount" name="amount"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="avgFee">
+                    <span class="x-red">*</span>分摊费用
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+
+                        <input class="layui-input" id="avgFee" name="avgFee"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="endTime">
+                    <span class="x-red">*</span>活动结束时间
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+
+                        <input class="layui-input" id="endTime" name="endTime"
+                               type="text">
                     </div>
                 </div>
             </div>
@@ -119,7 +148,7 @@
                 function (data) {
                     //发异步，把数据提交给java
                     $.ajax({
-                        url: "/user/save",
+                        url: "/activity/save",
                         data: JSON.stringify(data.field),
                         dataType: "json",
                         type: "post",

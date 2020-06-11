@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 团队Controller
+ *
  * @author Clrvn
  */
 @RestController
@@ -24,6 +25,7 @@ public class TeamController {
 
     /**
      * 查询团队页面
+     *
      * @return 分页团队数据
      */
     @GetMapping("/page")
@@ -45,7 +47,7 @@ public class TeamController {
      */
     @GetMapping("/findById")
     public ResultVO findById(@RequestParam(value = "id") Integer id) {
-        Team team =teamService.findById(id);
+        Team team = teamService.findById(id);
         return ResultVOUtil.success(team);
     }
 
@@ -54,7 +56,7 @@ public class TeamController {
      */
     @GetMapping("/findByMap")
     public ResultVO findByMap() {
-        Team team =teamService.findByMap(new RequestParamsUtil().getParameters());
+        Team team = teamService.findByMap(new RequestParamsUtil().getParameters());
         return ResultVOUtil.success(team);
     }
 
@@ -63,10 +65,10 @@ public class TeamController {
      */
     @PostMapping("/save")
     public ResultVO save(@RequestBody Team team) {
-        try{
+        try {
             teamService.save(team);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("添加失败！");
         }
     }
@@ -76,10 +78,10 @@ public class TeamController {
      */
     @PutMapping("/update")
     public ResultVO update(@RequestBody Team team) {
-        try{
+        try {
             teamService.update(team);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("修改失败！");
         }
 
@@ -90,10 +92,10 @@ public class TeamController {
      */
     @DeleteMapping("/deleteById")
     public ResultVO deleteById(@RequestParam(value = "id") Integer id) {
-        try{
+        try {
             teamService.deleteById(id);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("删除失败！");
         }
     }

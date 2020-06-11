@@ -17,27 +17,27 @@
 <div class="layui-fluid" id="vmViewActivityUser">
     <div class="layui-row">
         <form class="layui-form">
-                                                                            <div class="layui-form-item">
-                        <label class="layui-form-label" for="activityId">
-                            活动id
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="activityId" v-text="activityUser.activityId"></div>
-                            </div>
-                        </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="activityId">
+                    活动id
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="activityId" style="line-height: 36px" v-text="activityUser.activityId"></div>
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="userId">
-                            会员id
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="userId" v-text="activityUser.userId"></div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="userId">
+                    会员id
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="userId" style="line-height: 36px" v-text="activityUser.userId"></div>
                     </div>
-                                        <div class="layui-form-item">
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" onclick="xadmin.close();" style="width: 100px;">
                     返回
@@ -51,33 +51,34 @@
     var viewActivityUserId = sessionStorage.getItem("viewActivityUserId");
 
     vm = new Vue({
-    el: "#vmViewActivityUser",
-    data: {
-    activityUser: {}
-    },
-    methods: {},
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/activityUser/findById",
-            data: {
-                "id": viewActivityUserId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.activityUser = result.data;
-                } else {
-                    layer.alert("获取修改活动成员信息失败！");
+        el: "#vmViewActivityUser",
+        data: {
+            activityUser: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/activityUser/findById",
+                data: {
+                    "id": viewActivityUserId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.activityUser = result.data;
+                    } else {
+                        layer.alert("获取修改活动成员信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
+        }
     });
 
-    layui.use(['form', 'layer', 'laydate'], function () {});
+    layui.use(['form', 'layer', 'laydate'], function () {
+    });
 </script>
 </body>
 </html>

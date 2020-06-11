@@ -20,7 +20,7 @@
                 <div class="layui-card-body ">
                     <blockquote class="layui-elem-quote">欢迎【<span style="color: blue"
                                                                   th:if="${session.USER.roleId == 1}">商家</span><span
-                            style="color: blue" th:if="${session.USER.roleId == 2}">用户</span>】：
+                            style="color: blue" th:if="${session.USER.roleId == 2}">会员</span>】：
                         <span class="x-red" th:text="${session.USER.name}">test</span>！
                     </blockquote>
                 </div>
@@ -49,7 +49,7 @@
                     <form class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">
-                                用户名
+                                会员名
                             </label>
                             <div class="layui-input-block">
                                 <div class="layui-input-inline layui-show-xs-block">
@@ -105,7 +105,7 @@
                     if (result.code === 200) {
                         _this.user = result.data;
                     } else {
-                        layer.alert("获取用户信息失败！");
+                        layer.alert("获取会员信息失败！");
                     }
                 }
             });

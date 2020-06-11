@@ -1,10 +1,10 @@
 package com.service.impl;
 
+import com.dao.AppendDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.model.Append;
 import com.service.AppendService;
-import com.dao.AppendDao;
 import com.utils.RequestParamsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * 活动追加费用ServiceImpl
+ *
  * @author Clrvn
  */
 @Service
@@ -24,6 +25,7 @@ public class AppendServiceImpl implements AppendService {
 
     /**
      * 查询活动追加费用页面
+     *
      * @return 分页活动追加费用数据
      */
     @Override

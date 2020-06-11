@@ -17,47 +17,47 @@
 <div class="layui-fluid" id="vmViewTeam">
     <div class="layui-row">
         <form class="layui-form">
-                                                                            <div class="layui-form-item">
-                        <label class="layui-form-label" for="name">
-                            团队名
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="name" v-text="team.name"></div>
-                            </div>
-                        </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="name">
+                    团队名
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="name" style="line-height: 36px" v-text="team.name"></div>
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="teamUserId">
-                            团长id
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="teamUserId" v-text="team.teamUserId"></div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="teamUserId">
+                    团长id
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="teamUserId" style="line-height: 36px" v-text="team.teamUserId"></div>
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="createTime">
-                            团队创建时间
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="createTime" v-text="team.createTime"></div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="createTime">
+                    团队创建时间
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="createTime" style="line-height: 36px" v-text="team.createTime"></div>
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="teamFee">
-                            团费
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="teamFee" v-text="team.teamFee"></div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="teamFee">
+                    团费
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="teamFee" style="line-height: 36px" v-text="team.teamFee"></div>
                     </div>
-                                        <div class="layui-form-item">
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" onclick="xadmin.close();" style="width: 100px;">
                     返回
@@ -71,33 +71,34 @@
     var viewTeamId = sessionStorage.getItem("viewTeamId");
 
     vm = new Vue({
-    el: "#vmViewTeam",
-    data: {
-    team: {}
-    },
-    methods: {},
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/team/findById",
-            data: {
-                "id": viewTeamId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.team = result.data;
-                } else {
-                    layer.alert("获取修改团队信息失败！");
+        el: "#vmViewTeam",
+        data: {
+            team: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/team/findById",
+                data: {
+                    "id": viewTeamId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.team = result.data;
+                    } else {
+                        layer.alert("获取修改团队信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
+        }
     });
 
-    layui.use(['form', 'layer', 'laydate'], function () {});
+    layui.use(['form', 'layer', 'laydate'], function () {
+    });
 </script>
 </body>
 </html>

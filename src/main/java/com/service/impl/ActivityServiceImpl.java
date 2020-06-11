@@ -1,10 +1,10 @@
 package com.service.impl;
 
+import com.dao.ActivityDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.model.Activity;
 import com.service.ActivityService;
-import com.dao.ActivityDao;
 import com.utils.RequestParamsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * 活动表ServiceImpl
+ *
  * @author Clrvn
  */
 @Service
@@ -24,6 +25,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     /**
      * 查询活动表页面
+     *
      * @return 分页活动表数据
      */
     @Override

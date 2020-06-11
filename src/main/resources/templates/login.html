@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>自助点餐系统</title>
+    <title>团队活动管理系统</title>
     <meta content="webkit|ie-comp|ie-stand" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="no-siteapp" http-equiv="Cache-Control"/>
@@ -15,10 +15,10 @@
 <body class="login-bg">
 
 <div class="login layui-anim layui-anim-up">
-    <div class="message">用户登录</div>
+    <div class="message">会员登录</div>
     <div id="darkbannerwrap"></div>
     <form class="layui-form" method="post" onsubmit="return false;">
-        <input class="layui-input" lay-verify="required" name="name" placeholder="用户名" type="text">
+        <input class="layui-input" lay-verify="required" name="name" placeholder="会员名" type="text">
         <hr class="hr15">
         <input class="layui-input" lay-verify="required" name="password" placeholder="密码" type="password">
         <hr class="hr15">
@@ -47,7 +47,7 @@
             success: function (result) {
                 if (result.code === 200) {
                     layer.msg("登录成功!");
-                    //延时操作，增加用户体验
+                    //延时操作，增加会员体验
                     setTimeout(function () {
                         location.href = "/index";
                     }, 800);

@@ -39,17 +39,17 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>团队id</th>
-                                                                                                <th>队员id</th>
-                                                                        <th>操作</th>
+                            <th>团队id</th>
+                            <th>队员id</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="teamUser,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="teamUser.teamId"></td>
-                                                                                                            <td v-text="teamUser.userId"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="teamUser.teamId"></td>
+                            <td v-text="teamUser.userId"></td>
+                            <td class="td-manage">
                                 <button @click="editTeamUser(teamUser.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editTeamUser"
@@ -132,31 +132,31 @@
              */
             delTeamUser: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/teamUser/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/teamUser/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *

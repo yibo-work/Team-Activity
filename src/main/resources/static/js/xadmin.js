@@ -68,7 +68,7 @@
     /**
      * [open 打开弹出层]
      * @param  {[type]}  title [弹出层标题]
-     * @param  {[type]}  url   [弹出层地址]
+     * @param  {string}  url   [弹出层地址]
      * @param  {[type]}  w     [宽]
      * @param  {[type]}  h     [高]
      * @return {[type]}        [description]

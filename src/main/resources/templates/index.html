@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>自助点餐系统</title>
+    <title>团队活动管理系统</title>
     <meta content="webkit|ie-comp|ie-stand" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -22,15 +22,15 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a target="_top" th:href="@{/index}">自助点餐系统</a></div>
+        <a target="_top" th:href="@{/index}">团队活动管理系统</a></div>
     <div class="left_open">
         <a><i class="iconfont" title="展开左侧栏">&#xe699;</i></a>
     </div>
     <ul class="layui-nav right">
         <li class="layui-nav-item">
             <a href="javascript:void(0)">
-                【<span th:if="${session.USER.roleId == 1}">商家</span>
-                <span th:if="${session.USER.roleId == 2}">用户</span>
+                【<span th:if="${session.USER.roleId == 1}">管理员</span>
+                <span th:if="${session.USER.roleId == 2}">会员</span>
                 】<span
                     th:text="${session.USER.name}">admin</span></a>
             <dl class="layui-nav-child">
@@ -50,94 +50,40 @@
         <ul class="active" id="nav">
             <li class="open" th:if="${session.USER.roleId == 1}">
                 <a href="javascript:void(0)">
-                    <i class="iconfont left-nav-li" lay-tips="菜品管理">&#xe726;</i>
-                    <cite>菜品管理</cite>
+                    <i class="iconfont left-nav-li" lay-tips="会员管理">&#xe726;</i>
+                    <cite>会员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu" style="display: block;">
                     <li>
-                        <a onclick="xadmin.add_tab('种类管理','categoryManage')">
+                        <a onclick="xadmin.add_tab('会员管理','userManage')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>种类管理</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('数量管理','dishManage')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>数量管理</cite></a>
+                            <cite>会员管理</cite></a>
                     </li>
                 </ul>
             </li>
-            <li class="open" th:if="${session.USER.roleId == 1}">
+            <li class="open" th:if="${session.USER.roleId == 2}">
                 <a href="javascript:void(0)">
-                    <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe726;</i>
-                    <cite>订单管理</cite>
+                    <i class="iconfont left-nav-li" lay-tips="我的团队">&#xe726;</i>
+                    <cite>我的团队</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu" style="display: block;">
                     <li>
-                        <a onclick="xadmin.add_tab('订单管理','orderManage')">
+                        <a onclick="xadmin.add_tab('我的团队','myTeamManage')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单管理</cite></a>
+                            <cite>我的团队</cite></a>
                     </li>
                 </ul>
             </li>
-            <li class="open" th:if="${session.USER.roleId == 1}">
+            <li class="open" th:if="${session.USER.roleId == 2}">
                 <a href="javascript:void(0)">
-                    <i class="iconfont left-nav-li" lay-tips="店铺管理">&#xe726;</i>
-                    <cite>店铺管理</cite>
+                    <i class="iconfont left-nav-li" lay-tips="团队活动记录">&#xe726;</i>
+                    <cite>团队活动记录</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu" style="display: block;">
                     <li>
                         <a onclick="xadmin.add_tab('餐桌管理','deskManage')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>餐桌管理</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('活动中心','activityManage')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>活动中心</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('积分管理','scoreRuleManage')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>积分管理</cite></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="open" th:if="${session.USER.roleId == 2}">
-                <a href="javascript:void(0)">
-                    <i class="iconfont left-nav-li" lay-tips="自助点餐">&#xe726;</i>
-                    <cite>自助点餐</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu" style="display: block;">
-                    <li>
-                        <a onclick="xadmin.add_tab('我的点餐','orderList')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>我的点餐</cite></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="open" th:if="${session.USER.roleId == 2}">
-                <a href="javascript:void(0)">
-                    <i class="iconfont left-nav-li" lay-tips="活动中心">&#xe726;</i>
-                    <cite>活动中心</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu" style="display: block;">
-                    <li>
-                        <a onclick="xadmin.add_tab('活动中心','activityList')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>活动中心</cite></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="open" th:if="${session.USER.roleId == 2}">
-                <a href="javascript:void(0)">
-                    <i class="iconfont left-nav-li" lay-tips="积分兑换">&#xe726;</i>
-                    <cite>积分兑换</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu" style="display: block;">
-                    <li>
-                        <a onclick="xadmin.add_tab('活动中心','scoreRuleList')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>积分兑换</cite></a>
+                            <cite>团队活动记录</cite></a>
                     </li>
                 </ul>
             </li>

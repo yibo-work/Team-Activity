@@ -17,37 +17,37 @@
 <div class="layui-fluid" id="vmViewAppend">
     <div class="layui-row">
         <form class="layui-form">
-                                                                            <div class="layui-form-item">
-                        <label class="layui-form-label" for="activityId">
-                            活动id
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="activityId" v-text="append.activityId"></div>
-                            </div>
-                        </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="activityId">
+                    活动id
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="activityId" style="line-height: 36px" v-text="append.activityId"></div>
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="userId">
-                            会员id
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="userId" v-text="append.userId"></div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="userId">
+                    会员id
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="userId" style="line-height: 36px" v-text="append.userId"></div>
                     </div>
-                                                                <div class="layui-form-item">
-                        <label class="layui-form-label" for="appendFee">
-                            追加费用
-                        </label>
-                        <div class="layui-input-block">
-                            <div class="layui-input-inline layui-show-xs-block">
-                                <div style="line-height: 36px" id="appendFee" v-text="append.appendFee"></div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="appendFee">
+                    追加费用
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <div id="appendFee" style="line-height: 36px" v-text="append.appendFee"></div>
                     </div>
-                                        <div class="layui-form-item">
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" onclick="xadmin.close();" style="width: 100px;">
                     返回
@@ -61,33 +61,34 @@
     var viewAppendId = sessionStorage.getItem("viewAppendId");
 
     vm = new Vue({
-    el: "#vmViewAppend",
-    data: {
-    append: {}
-    },
-    methods: {},
-    created: function () {
-        var _this = this;
-        $.ajax({
-            url: "/append/findById",
-            data: {
-                "id": viewAppendId
-            },
-            dataType: "json",
-            type: "get",
-            success: function (result) {
-                if (result.code === 200) {
-                    _this.append = result.data;
-                } else {
-                    layer.alert("获取修改活动追加费用信息失败！");
+        el: "#vmViewAppend",
+        data: {
+            append: {}
+        },
+        methods: {},
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/append/findById",
+                data: {
+                    "id": viewAppendId
+                },
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.append = result.data;
+                    } else {
+                        layer.alert("获取修改活动追加费用信息失败！");
+                    }
                 }
-            }
-        });
+            });
 
-    }
+        }
     });
 
-    layui.use(['form', 'layer', 'laydate'], function () {});
+    layui.use(['form', 'layer', 'laydate'], function () {
+    });
 </script>
 </body>
 </html>

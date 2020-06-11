@@ -1,10 +1,10 @@
 package com.service.impl;
 
+import com.dao.TeamUserDao;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.model.TeamUser;
 import com.service.TeamUserService;
-import com.dao.TeamUserDao;
 import com.utils.RequestParamsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * 团队成员ServiceImpl
+ *
  * @author Clrvn
  */
 @Service
@@ -24,6 +25,7 @@ public class TeamUserServiceImpl implements TeamUserService {
 
     /**
      * 查询团队成员页面
+     *
      * @return 分页团队成员数据
      */
     @Override

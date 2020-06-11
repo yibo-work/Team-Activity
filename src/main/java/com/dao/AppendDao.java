@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 活动追加费用DAO
+ *
  * @author Clrvn
  */
 public interface AppendDao {

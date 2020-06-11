@@ -39,17 +39,17 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                                                                                                                    <th>活动id</th>
-                                                                                                <th>会员id</th>
-                                                                        <th>操作</th>
+                            <th>活动id</th>
+                            <th>会员id</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="activityUser,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                                                                                                                                    <td v-text="activityUser.activityId"></td>
-                                                                                                            <td v-text="activityUser.userId"></td>
-                                                                                <td class="td-manage">
+                            <td v-text="activityUser.activityId"></td>
+                            <td v-text="activityUser.userId"></td>
+                            <td class="td-manage">
                                 <button @click="editActivityUser(activityUser.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editActivityUser"
@@ -132,31 +132,31 @@
              */
             delActivityUser: function (id) {
                 layer.confirm('确认要删除吗？',
-                        function () {
-                            //发异步删除数据
-                            $.ajax({
-                                url: "/activityUser/deleteById",
-                                data: {
-                                    id: id
-                                },
-                                dataType: "json",
-                                type: "delete",
-                                success: function (result) {
-                                    if (result.code === 200) {
-                                        layer.msg('删除成功', {
-                                            icon: 1,
-                                            time: 1000
-                                        });
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        layer.alert(result.msg, {icon: 5});
-                                    }
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/activityUser/deleteById",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "delete",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
                                 }
-                            });
-
+                            }
                         });
+
+                    });
             },
             /**
              *

@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 活动表DAO
+ *
  * @author Clrvn
  */
 public interface ActivityDao {

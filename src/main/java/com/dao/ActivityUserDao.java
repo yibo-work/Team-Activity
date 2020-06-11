@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 活动成员DAO
+ *
  * @author Clrvn
  */
 public interface ActivityUserDao {

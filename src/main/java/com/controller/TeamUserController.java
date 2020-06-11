@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 团队成员Controller
+ *
  * @author Clrvn
  */
 @RestController
@@ -24,6 +25,7 @@ public class TeamUserController {
 
     /**
      * 查询团队成员页面
+     *
      * @return 分页团队成员数据
      */
     @GetMapping("/page")
@@ -45,7 +47,7 @@ public class TeamUserController {
      */
     @GetMapping("/findById")
     public ResultVO findById(@RequestParam(value = "id") Integer id) {
-        TeamUser teamUser =teamUserService.findById(id);
+        TeamUser teamUser = teamUserService.findById(id);
         return ResultVOUtil.success(teamUser);
     }
 
@@ -54,7 +56,7 @@ public class TeamUserController {
      */
     @GetMapping("/findByMap")
     public ResultVO findByMap() {
-        TeamUser teamUser =teamUserService.findByMap(new RequestParamsUtil().getParameters());
+        TeamUser teamUser = teamUserService.findByMap(new RequestParamsUtil().getParameters());
         return ResultVOUtil.success(teamUser);
     }
 
@@ -63,10 +65,10 @@ public class TeamUserController {
      */
     @PostMapping("/save")
     public ResultVO save(@RequestBody TeamUser teamUser) {
-        try{
+        try {
             teamUserService.save(teamUser);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("添加失败！");
         }
     }
@@ -76,10 +78,10 @@ public class TeamUserController {
      */
     @PutMapping("/update")
     public ResultVO update(@RequestBody TeamUser teamUser) {
-        try{
+        try {
             teamUserService.update(teamUser);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("修改失败！");
         }
 
@@ -90,10 +92,10 @@ public class TeamUserController {
      */
     @DeleteMapping("/deleteById")
     public ResultVO deleteById(@RequestParam(value = "id") Integer id) {
-        try{
+        try {
             teamUserService.deleteById(id);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("删除失败！");
         }
     }

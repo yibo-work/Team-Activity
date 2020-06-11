@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>修改用户</title>
+    <title>修改会员</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -19,7 +19,7 @@
         <form class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label" for="name">
-                    <span class="x-red">*</span>用户名
+                    <span class="x-red">*</span>会员名
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
@@ -45,7 +45,8 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-                        <input :value="user.password" class="layui-input" id="password" lay-verify="required" name="password"
+                        <input :value="user.password" class="layui-input" id="password" lay-verify="required"
+                               name="password"
                                type="password"></div>
                 </div>
             </div>
@@ -94,7 +95,7 @@
                     if (result.code === 200) {
                         _this.user = result.data;
                     } else {
-                        layer.alert("获取修改用户信息失败！");
+                        layer.alert("获取修改会员信息失败！");
                     }
                 }
             });

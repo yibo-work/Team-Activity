@@ -1,16 +1,17 @@
 package com.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import lombok.Data;
-
 /**
  * 团队
+ *
  * @author Clrvn
  */
 @Data
-public class Team implements Serializable{
+public class Team implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

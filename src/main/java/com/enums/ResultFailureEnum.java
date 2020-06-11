@@ -8,12 +8,12 @@ public enum ResultFailureEnum {
      * 返回错误信息枚举类
      */
     LOGIN_ERROR(1, "登录失败"),
-    REGISTER_ERROR(2, "注册失败，已存在该用户名！"),
+    REGISTER_ERROR(2, "注册失败，已存在该会员名！"),
     ;
 
-    private Integer code;
+    private final Integer code;
 
-    private String msg;
+    private final String msg;
 
     ResultFailureEnum(Integer code, String msg) {
         this.code = code;

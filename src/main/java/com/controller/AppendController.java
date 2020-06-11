@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 活动追加费用Controller
+ *
  * @author Clrvn
  */
 @RestController
@@ -24,6 +25,7 @@ public class AppendController {
 
     /**
      * 查询活动追加费用页面
+     *
      * @return 分页活动追加费用数据
      */
     @GetMapping("/page")
@@ -45,7 +47,7 @@ public class AppendController {
      */
     @GetMapping("/findById")
     public ResultVO findById(@RequestParam(value = "id") Integer id) {
-        Append append =appendService.findById(id);
+        Append append = appendService.findById(id);
         return ResultVOUtil.success(append);
     }
 
@@ -54,7 +56,7 @@ public class AppendController {
      */
     @GetMapping("/findByMap")
     public ResultVO findByMap() {
-        Append append =appendService.findByMap(new RequestParamsUtil().getParameters());
+        Append append = appendService.findByMap(new RequestParamsUtil().getParameters());
         return ResultVOUtil.success(append);
     }
 
@@ -63,10 +65,10 @@ public class AppendController {
      */
     @PostMapping("/save")
     public ResultVO save(@RequestBody Append append) {
-        try{
+        try {
             appendService.save(append);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("添加失败！");
         }
     }
@@ -76,10 +78,10 @@ public class AppendController {
      */
     @PutMapping("/update")
     public ResultVO update(@RequestBody Append append) {
-        try{
+        try {
             appendService.update(append);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("修改失败！");
         }
 
@@ -90,10 +92,10 @@ public class AppendController {
      */
     @DeleteMapping("/deleteById")
     public ResultVO deleteById(@RequestParam(value = "id") Integer id) {
-        try{
+        try {
             appendService.deleteById(id);
             return ResultVOUtil.success();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return ResultVOUtil.failure("删除失败！");
         }
     }
