@@ -3,9 +3,10 @@
 
 <mapper namespace="com.dao.ActivityDao">
     <select id="findById" resultType="com.model.Activity">
-        select `id`,
+        select a.`id`,
                `team_id`,
-               `name`,
+               s.name as team_name,
+               a.`name`,
                `content`,
                `start_time`,
                `budget`,
@@ -13,22 +14,33 @@
                `amount`,
                `avg_fee`,
                `end_time`
-        from activity
-        where id = #{id}
+        from activity a
+                     left join team s ON s.id = a.team_id
+        where a.id = #{id}
     </select>
 
     <select id="findByMap" resultType="com.model.Activity">
-        select `id`,`team_id`,`name`,`content`,`start_time`,`budget`,`avg_budget`,`amount`,`avg_fee`,`end_time` from
-        activity
+        select a.`id`,
+        `team_id`,
+        s.name as team_name,
+        a.`name`,
+        `content`,
+        `start_time`,
+        `budget`,
+        `avg_budget`,
+        `amount`,
+        `avg_fee`,
+        `end_time`
+        from activity a left join team s ON s.id = a.team_id
         <where>
             <if test="id != null and id != ''">
-                and id = #{id}
+                and a.id = #{id}
             </if>
             <if test="teamId != null and teamId != ''">
                 and team_id = #{teamId}
             </if>
             <if test="name != null and name != ''">
-                and name = #{name}
+                and a.name = #{name}
             </if>
             <if test="content != null and content != ''">
                 and content = #{content}
@@ -55,11 +67,21 @@
     </select>
 
     <select id="list" resultType="com.model.Activity">
-        select `id`,`team_id`,`name`,`content`,`start_time`,`budget`,`avg_budget`,`amount`,`avg_fee`,`end_time` from
-        activity
+        select a.`id`,
+        `team_id`,
+        s.name as team_name,
+        a.`name`,
+        `content`,
+        `start_time`,
+        `budget`,
+        `avg_budget`,
+        `amount`,
+        `avg_fee`,
+        `end_time`
+        from activity a left join team s ON s.id = a.team_id
         <where>
             <if test="id != null and id != ''">
-                and id =
+                and a.id =
                 #{id}
             </if>
             <if test="teamId != null and teamId != ''">
@@ -67,7 +89,7 @@
                 #{teamId}
             </if>
             <if test="name != null and name != ''">
-                and name =
+                and a.name =
                 #{name}
             </if>
             <if test="content != null and content != ''">
@@ -169,41 +191,13 @@
     <update id="update" parameterType="com.model.Activity">
         update activity
         <set>
-            <if test="teamId != null">
-                `team_id` = #{teamId}
-                ,
-            </if>
-            <if test="name != null">
-                `name` = #{name}
-                ,
-            </if>
-            <if test="content != null">
-                `content` = #{content}
-                ,
-            </if>
-            <if test="startTime != null">
-                `start_time` = #{startTime}
-                ,
-            </if>
-            <if test="budget != null">
-                `budget` = #{budget}
-                ,
-            </if>
-            <if test="avgBudget != null">
-                `avg_budget` = #{avgBudget}
-                ,
-            </if>
             <if test="amount != null">
-                `amount` = #{amount}
-                ,
+                `amount` = #{amount} ,
             </if>
             <if test="avgFee != null">
-                `avg_fee` = #{avgFee}
-                ,
+                `avg_fee` = #{avgFee} ,
             </if>
-            <if test="endTime != null">
-                `end_time` = #{endTime}
-            </if>
+            end_time = CURRENT_TIMESTAMP
         </set>
         where id = #{id}
     </update>

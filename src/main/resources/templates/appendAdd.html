@@ -18,26 +18,14 @@
     <div class="layui-row">
         <form class="layui-form">
             <div class="layui-form-item">
-                <label class="layui-form-label" for="activityId">
-                    <span class="x-red">*</span>活动id
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-
-                        <input class="layui-input" id="activityId" name="activityId"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label" for="userId">
-                    <span class="x-red">*</span>会员id
+                    <span class="x-red">*</span>队员
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-
-                        <input class="layui-input" id="userId" name="userId"
-                               type="text">
+                        <select id="userId" name="userId">
+                            <option :value="user.id" v-for="user,index in activityFeeList">{{user.name}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -47,7 +35,6 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-
                         <input class="layui-input" id="appendFee" name="appendFee"
                                type="text">
                     </div>
@@ -63,6 +50,32 @@
     </div>
 </div>
 <script charset="UTF-8" type="text/javascript">
+
+    var addActivityFeeId = sessionStorage.getItem("addActivityFeeId");
+    var teamActivityManageTeamId = sessionStorage.getItem("teamActivityManageTeamId");
+
+    vm = new Vue({
+        el: "#vmAddActivityFee",
+        data: {
+            activityFeeList: []
+        },
+        created: function () {
+            var _this = this;
+            $.ajax({
+                url: "/user/getAddActivityFeeList?teamId=" + teamActivityManageTeamId + "&activityId=" + addActivityFeeId,
+                dataType: "json",
+                type: "get",
+                success: function (result) {
+                    if (result.code === 200) {
+                        _this.activityFeeList = result.data;
+                    } else {
+                        layer.alert("获取失败！");
+                    }
+                }
+            });
+        }
+    });
+
 
     layui.use(['form', 'layer'],
         function () {

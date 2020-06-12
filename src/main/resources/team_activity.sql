@@ -89,7 +89,7 @@ CREATE TABLE `team`
     `team_fee`     int(11)                                                       NOT NULL DEFAULT 0 COMMENT '团费',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 2
+  AUTO_INCREMENT = 1
   CHARACTER SET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT = '团队'
   ROW_FORMAT = Dynamic;

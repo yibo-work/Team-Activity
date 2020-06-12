@@ -64,8 +64,13 @@
                                 </button>
                                 <button @click="updateTeamUser(team.id)"
                                         class="layui-btn layui-btn-warm"
-                                        onclick="xadmin.open('团队成员管理','/teamUserManage', 1200,1000,true)">
-                                    <i class="layui-icon"></i>团队成员管理
+                                        onclick="xadmin.open('成员管理','/teamUserManage', 1200,1000,true)">
+                                    <i class="layui-icon"></i>成员管理
+                                </button>
+                                <button @click="teamActivityManage(team.id)"
+                                        class="layui-btn layui-btn-warm"
+                                        onclick="xadmin.open('活动管理','/activityManage', 1200,1000,true)">
+                                    <i class="layui-icon"></i>活动管理
                                 </button>
                                 <button @click="delTeam(team.id)"
                                         class="layui-btn layui-btn-danger"
@@ -182,6 +187,10 @@
             updateTeamUser: function (updateTeamUserId) {
                 //把要修改的updateTeamUserId存到sessionStorage中
                 sessionStorage.setItem("updateTeamUserId", updateTeamUserId);
+            },
+            teamActivityManage: function (teamActivityManageTeamId) {
+                //把要修改的teamActivityManageTeamId存到sessionStorage中
+                sessionStorage.setItem("teamActivityManageTeamId", teamActivityManageTeamId);
             }
 
         },

@@ -39,36 +39,17 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>活动id</th>
-                            <th>会员id</th>
+                            <th>活动名</th>
+                            <th>会员名</th>
                             <th>追加费用</th>
-                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="append,i in pageInfo.list">
                             <td v-text="i+1"></td>
-                            <td v-text="append.activityId"></td>
-                            <td v-text="append.userId"></td>
+                            <td v-text="append.activityName"></td>
+                            <td v-text="append.userName"></td>
                             <td v-text="append.appendFee"></td>
-                            <td class="td-manage">
-                                <button @click="editAppend(append.id)"
-                                        class="layui-btn layui-btn-warm"
-                                        id="editAppend"
-                                        onclick="xadmin.open('编辑活动追加费用','/appendEdit',500,700)">
-                                    <i class="layui-icon">&#xe631;</i>编辑
-                                </button>
-                                <button @click="viewAppend(append.id)"
-                                        class="layui-btn"
-                                        id="viewAppend"
-                                        onclick="xadmin.open('活动追加费用详情','/appendView',500,700)">
-                                    <i class="layui-icon layui-icon-console"></i>详情
-                                </button>
-                                <button @click="delAppend(append.id)"
-                                        class="layui-btn layui-btn-danger"
-                                        id="delAppend">
-                                    <i class="layui-icon">&#xe640;</i>删除
-                                </button>
                             </td>
                         </tr>
                         <tr v-if="pageInfo.total == 0">
@@ -105,9 +86,6 @@
 </div>
 </body>
 <script type="text/javascript">
-
-    layui.use(['form'], function () {
-    });
 
     vm = new Vue({
         el: "#vmAppend",
@@ -167,19 +145,14 @@
             editAppend: function (editAppendId) {
                 //把要修改的editAppendId存到sessionStorage中
                 sessionStorage.setItem("editAppendId", editAppendId);
-            },
-            /**
-             *
-             * 活动追加费用详情
-             */
-            viewAppend: function (viewAppendId) {
-                //把要修改的viewAppendId存到sessionStorage中
-                sessionStorage.setItem("viewAppendId", viewAppendId);
             }
         },
         created: function () {
             this.getPage(1, 5);
         }
+    });
+
+    layui.use(['form'], function () {
     });
 
 </script>

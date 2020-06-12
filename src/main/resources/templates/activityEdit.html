@@ -2,7 +2,7 @@
 <html class="x-admin-sm" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>修改活动表</title>
+    <title>活动结算</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" name="viewport"/>
@@ -17,17 +17,6 @@
 <div class="layui-fluid" id="vmUpdateActivity">
     <div class="layui-row">
         <form class="layui-form">
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="teamId">
-                    <span class="x-red">*</span>团队id
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="teamId" lay-verify="required" name="teamId" type="text"
-                               v-model="activity.teamId"></div>
-                </div>
-            </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label" for="name">
                     <span class="x-red">*</span>活动名称
@@ -80,39 +69,6 @@
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="avgBudget" lay-verify="required" name="avgBudget" type="text"
                                v-model="activity.avgBudget"></div>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="amount">
-                    <span class="x-red">*</span>总费用
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="amount" lay-verify="required" name="amount" type="text"
-                               v-model="activity.amount"></div>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="avgFee">
-                    <span class="x-red">*</span>分摊费用
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="avgFee" lay-verify="required" name="avgFee" type="text"
-                               v-model="activity.avgFee"></div>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="endTime">
-                    <span class="x-red">*</span>活动结束时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-                        <input class="layui-input" id="endTime" lay-verify="required" name="endTime" type="text"
-                               v-model="activity.endTime"></div>
                 </div>
             </div>
 

@@ -92,6 +92,22 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 查询未在活动会员列表
+     */
+    @Override
+    public List<User> getAddActivityUserList(Map<String, Object> parameters) {
+        return userDao.getAddActivityUserList(parameters);
+    }
+
+    /**
+     * 获取活动的会员列表
+     */
+    @Override
+    public List<User> getAddActivityFeeList(Map<String, Object> parameters) {
+        return userDao.getAddActivityFeeList(parameters);
+    }
+
+    /**
      * 查询团队会员列表
      */
     @Override

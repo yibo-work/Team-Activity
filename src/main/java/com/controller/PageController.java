@@ -135,9 +135,4 @@ public class PageController {
         return "activityUserAdd";
     }
 
-    @GetMapping("/activityUserEdit")
-    public String activityUserEdit() {
-        return "activityUserEdit";
-    }
-
 }

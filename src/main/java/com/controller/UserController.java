@@ -104,6 +104,24 @@ public class UserController {
     }
 
     /**
+     * 查询未在活动会员列表
+     */
+    @GetMapping("/getAddTeamUserList")
+    public ResultVO getAddActivityUserList() {
+        List<User> userList = userService.getAddActivityUserList(new RequestParamsUtil().getParameters());
+        return ResultVOUtil.success(userList);
+    }
+
+    /**
+     * 查询活动会员列表
+     */
+    @GetMapping("/getAddActivityFeeList")
+    public ResultVO getAddActivityFeeList() {
+        List<User> userList = userService.getAddActivityFeeList(new RequestParamsUtil().getParameters());
+        return ResultVOUtil.success(userList);
+    }
+
+    /**
      * 通过id查询单个会员
      */
     @GetMapping("/findById")

@@ -49,6 +49,16 @@ public interface UserDao {
     List<User> getAddTeamUserList(Map<String, Object> parameters);
 
     /**
+     * 获取活动没有的会员
+     */
+    List<User> getAddActivityUserList(Map<String, Object> parameters);
+
+    /**
+     * 获取活动成员
+     */
+    List<User> getAddActivityFeeList(Map<String, Object> parameters);
+
+    /**
      * 获取团队已有的会员
      */
     @Deprecated

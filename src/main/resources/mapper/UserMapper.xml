@@ -93,14 +93,14 @@
 
     <select id="getAddTeamUserList" resultType="com.model.User">
         select `id`,
-               `name`,
-               `gender`,
-               `age`,
-               `password`,
-               `phone`,
-               `address`,
-               `email`,
-               `role_id`
+        `name`,
+        `gender`,
+        `age`,
+        `password`,
+        `phone`,
+        `address`,
+        `email`,
+        `role_id`
         from user a
         <!--不是已经添加的成员-->
         where a.id not in (SELECT user_id from team_user s where s.team_id = #{teamId})
@@ -110,7 +110,43 @@
         and a.role_id = 2
     </select>
 
-<!--@Deprecated-->
+    <select id="getAddActivityUserList" resultType="com.model.User">
+        select `id`,
+        `name`,
+        `gender`,
+        `age`,
+        `password`,
+        `phone`,
+        `address`,
+        `email`,
+        `role_id`
+        from user a
+        <!--是已经添加的成员-->
+        where a.id in (SELECT user_id from team_user s where s.team_id = #{teamId})
+        <!--不是活动已经有的成员-->
+        and a.id not in (Select user_id from activity_user d where activity_id = #{activityId})
+        <!--必须是会员-->
+        and a.role_id = 2
+    </select>
+
+    <select id="getAddActivityFeeList" resultType="com.model.User">
+        select `id`,
+        `name`,
+        `gender`,
+        `age`,
+        `password`,
+        `phone`,
+        `address`,
+        `email`,
+        `role_id`
+        from user a
+        where <!--可以是队长-->
+        a.id  in (Select team_user_id from team d where d.id = #{teamId})
+        <!--活动已经有的成员-->
+        or  a.id in (Select user_id from activity_user d where activity_id = #{activityId})
+    </select>
+
+    <!--@Deprecated-->
     <select id="getTeamUserList" resultType="com.model.User">
         select `id`,
                `name`,

@@ -26,6 +26,11 @@ public class Activity implements Serializable {
     private Integer teamId;
 
     /**
+     * 团队名
+     */
+    private String teamName;
+
+    /**
      * 活动名称
      */
     private String name;

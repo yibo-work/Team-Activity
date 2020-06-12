@@ -1,6 +1,5 @@
 package com.service;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.model.User;
 import com.utils.RequestParamsUtil;
@@ -61,5 +60,15 @@ public interface UserService {
      * 查询在团队会员列表
      */
     @Deprecated
-    PageInfo<User> getTeamUserList(RequestParamsUtil requestParamsUtil)  ;
+    PageInfo<User> getTeamUserList(RequestParamsUtil requestParamsUtil);
+
+    /**
+     * 查询未在活动会员列表
+     */
+    List<User> getAddActivityUserList(Map<String, Object> parameters);
+
+    /**
+     * 获取活动的会员列表
+     */
+    List<User> getAddActivityFeeList(Map<String, Object> parameters);
 }

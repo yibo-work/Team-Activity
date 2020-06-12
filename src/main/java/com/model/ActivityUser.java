@@ -20,14 +20,34 @@ public class ActivityUser implements Serializable {
     private Integer id;
 
     /**
+     * 团队id
+     */
+    private Integer teamId;
+
+    /**
+     * 团队名称
+     */
+    private String teamName;
+
+    /**
      * 活动id
      */
     private Integer activityId;
 
     /**
+     * 活动名称
+     */
+    private String activityName;
+
+    /**
      * 会员id
      */
     private Integer userId;
+
+    /**
+     * 会员名称
+     */
+    private String userName;
 
 
 }

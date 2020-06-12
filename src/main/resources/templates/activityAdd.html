@@ -18,18 +18,6 @@
     <div class="layui-row">
         <form class="layui-form">
             <div class="layui-form-item">
-                <label class="layui-form-label" for="teamId">
-                    <span class="x-red">*</span>团队id
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-
-                        <input class="layui-input" id="teamId" name="teamId"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label" for="name">
                     <span class="x-red">*</span>活动名称
                 </label>
@@ -47,11 +35,10 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-
-                                                                            <textarea class="layui-textarea"
-                                                                                      id="content" lay-verify="required"
-                                                                                      name="content"
-                                                                                      rows="4"></textarea>
+                        <textarea class="layui-textarea"
+                                  id="content" lay-verify="required"
+                                  name="content"
+                                  rows="4"></textarea>
                     </div>
                 </div>
             </div>
@@ -61,7 +48,6 @@
                 </label>
                 <div class="layui-input-block">
                     <div class="layui-input-inline layui-show-xs-block">
-
                         <input class="layui-input" id="startTime" name="startTime"
                                type="text">
                     </div>
@@ -92,42 +78,6 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label" for="amount">
-                    <span class="x-red">*</span>总费用
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-
-                        <input class="layui-input" id="amount" name="amount"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="avgFee">
-                    <span class="x-red">*</span>分摊费用
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-
-                        <input class="layui-input" id="avgFee" name="avgFee"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label" for="endTime">
-                    <span class="x-red">*</span>活动结束时间
-                </label>
-                <div class="layui-input-block">
-                    <div class="layui-input-inline layui-show-xs-block">
-
-                        <input class="layui-input" id="endTime" name="endTime"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <button class="layui-btn" lay-filter="add" lay-submit="">
                     确认添加
@@ -138,6 +88,8 @@
 </div>
 <script charset="UTF-8" type="text/javascript">
 
+    var teamActivityManageTeamId = sessionStorage.getItem("teamActivityManageTeamId");
+
     layui.use(['form', 'layer'],
         function () {
             var form = layui.form,
@@ -146,6 +98,7 @@
             //监听提交
             form.on('submit(add)',
                 function (data) {
+                    data.field.teamId = teamActivityManageTeamId;
                     //发异步，把数据提交给java
                     $.ajax({
                         url: "/activity/save",

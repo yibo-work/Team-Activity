@@ -3,16 +3,26 @@
 
 <mapper namespace="com.dao.ActivityUserDao">
     <select id="findById" resultType="com.model.ActivityUser">
-        select `id`, `activity_id`, `user_id`
-        from activity_user
-        where id = #{id}
+        select a.`id`, a.team_id, t.name as team_name,`activity_id`, s.name as activity_name, u.name as user_name, `user_id`
+        from activity_user a
+                     left join team t ON t.id = a.team_id
+                     left join activity s ON a.activity_id = s.id
+                     left join user u on a.user_id = u.id
+        where a.id = #{id}
     </select>
 
     <select id="findByMap" resultType="com.model.ActivityUser">
-        select `id`,`activity_id`,`user_id` from activity_user
+        select a.`id`, a.team_id, t.name as team_name,`activity_id`, s.name as activity_name, u.name as user_name, `user_id`
+        from activity_user a
+                     left join team t ON t.id = a.team_id
+                     left join activity s ON a.activity_id = s.id
+                     left join user u on a.user_id = u.id
         <where>
             <if test="id != null and id != ''">
-                and id = #{id}
+                and a.id = #{id}
+            </if>
+            <if test="teamId != null and teamId != ''">
+                and a.team_id = #{teamId}
             </if>
             <if test="activityId != null and activityId != ''">
                 and activity_id = #{activityId}
@@ -24,19 +34,23 @@
     </select>
 
     <select id="list" resultType="com.model.ActivityUser">
-        select `id`,`activity_id`,`user_id` from activity_user
+        select a.`id`, a.team_id, t.name as team_name,`activity_id`, s.name as activity_name, u.name as user_name, `user_id`
+        from activity_user a
+                     left join team t ON t.id = a.team_id
+                     left join activity s ON a.activity_id = s.id
+                     left join user u on a.user_id = u.id
         <where>
             <if test="id != null and id != ''">
-                and id =
-                #{id}
+                and a.id = #{id}
+            </if>
+            <if test="teamId != null and teamId != ''">
+                and a.team_id = #{teamId}
             </if>
             <if test="activityId != null and activityId != ''">
-                and activity_id =
-                #{activityId}
+                and activity_id = #{activityId}
             </if>
             <if test="userId != null and userId != ''">
-                and user_id =
-                #{userId}
+                and user_id = #{userId}
             </if>
         </where>
     </select>
@@ -44,6 +58,9 @@
     <insert id="save" parameterType="com.model.ActivityUser" useGeneratedKeys="true" keyProperty="id">
         insert into activity_user(
         <trim suffixOverrides=",">
+            <if test="teamId != null">
+                `team_id`,
+            </if>
             <if test="activityId != null">
                 `activity_id`,
             </if>
@@ -54,6 +71,9 @@
         )
         values (
         <trim suffixOverrides=",">
+            <if test="teamId != null">
+                #{teamId},
+            </if>
             <if test="activityId != null">
                 #{activityId},
             </if>
@@ -67,6 +87,10 @@
     <update id="update" parameterType="com.model.ActivityUser">
         update activity_user
         <set>
+            <if test="teamId != null">
+                `team_id` = #{teamId}
+                ,
+            </if>
             <if test="activityId != null">
                 `activity_id` = #{activityId}
                 ,
