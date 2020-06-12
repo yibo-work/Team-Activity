@@ -75,10 +75,10 @@
                                         onclick="xadmin.open('活动人员管理','/activityUserManage', 1200,1000,true)">
                                     <i class="layui-icon"></i>活动人员管理
                                 </button>
-                                <button @click="updateActivityFee(activity.id)"
+                                <button @click="addActivityFee(activity.id)"
                                         class="layui-btn layui-btn-warm"
-                                        onclick="xadmin.open('活动费用追加管理','/appendManage', 1200,1000,true)">
-                                    <i class="layui-icon"></i>活动费用追加管理
+                                        onclick="xadmin.open('活动费用追加','/appendAdd',500,700)">
+                                    <i class="layui-icon"></i>活动费用追加
                                 </button>
                                 <button @click="delActivity(activity.id)"
                                         class="layui-btn layui-btn-danger"
@@ -194,7 +194,7 @@
             /**
              * 修改团队活动费用
              */
-            updateActivityFee: function (addActivityFeeId) {
+            addActivityFee: function (addActivityFeeId) {
                 //把要修改的addActivityFeeId存到sessionStorage中
                 sessionStorage.setItem("addActivityFeeId", addActivityFeeId);
             }
