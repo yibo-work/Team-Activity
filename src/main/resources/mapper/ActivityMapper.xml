@@ -191,15 +191,49 @@
     <update id="update" parameterType="com.model.Activity">
         update activity
         <set>
+            <if test="teamId != null">
+                `team_id` = #{teamId} ,
+            </if>
+            <if test="name != null">
+                `name` = #{name} ,
+            </if>
+            <if test="content != null">
+                `content` = #{content} ,
+            </if>
+            <if test="startTime != null">
+                `start_time` = #{startTime} ,
+            </if>
+            <if test="budget != null">
+                `budget` = #{budget} ,
+            </if>
+            <if test="avgBudget != null">
+                `avg_budget` = #{avgBudget} ,
+            </if>
             <if test="amount != null">
                 `amount` = #{amount} ,
             </if>
             <if test="avgFee != null">
                 `avg_fee` = #{avgFee} ,
             </if>
-            end_time = CURRENT_TIMESTAMP
+            <if test="endTime != null">
+                `end_time` = #{endTime}
+            </if>
         </set>
         where id = #{id}
+    </update>
+
+    <update id="endActivity" parameterType="com.model.Activity">
+        <!--计算平均消费-->
+
+        update activity a
+        set `avg_fee` = (amount / (Select count(0) + 1 from activity_user s where s.activity_id = a.id) ) ,
+            end_time = CURRENT_TIMESTAMP
+        where id = #{id};
+
+        <!--减团费-->
+        update team a
+        set team_fee = team_fee - (select amount from activity where id = #{id})
+        where a.id = (select team_id  from activity where id = #{id} );
     </update>
 
     <delete id="deleteById">

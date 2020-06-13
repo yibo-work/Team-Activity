@@ -112,10 +112,8 @@
     </div>
 </div>
 </body>
-<script type="text/javascript">
-
-    layui.use(['form'], function () {
-    });
+<script charset="UTF-8" th:inline="javascript" type="text/javascript">
+    var sessionUser = [[${session.USER}]];
 
     vm = new Vue({
         el: "#vmTeam",
@@ -133,6 +131,7 @@
                     url += "&pageSize=" + pageSize;
                 }
 
+                url += "&teamUserId=" + sessionUser.id;
                 $.getJSON(url, function (data) {
                     _this.pageInfo = data;
                 });
@@ -197,6 +196,8 @@
         created: function () {
             this.getPage(1, 5);
         }
+    });
+    layui.use(['form'], function () {
     });
 
 </script>

@@ -73,6 +73,9 @@
             //监听提交
             form.on('submit(add)',
                 function (data) {
+
+                    data.field.teamId = teamActivityManageTeamId;
+                    data.field.activityId = updateActivityUserId;
                     //发异步，把数据提交给java
                     $.ajax({
                         url: "/activityUser/save",

@@ -106,7 +106,7 @@ public class UserController {
     /**
      * 查询未在活动会员列表
      */
-    @GetMapping("/getAddTeamUserList")
+    @GetMapping("/getAddActivityUserList")
     public ResultVO getAddActivityUserList() {
         List<User> userList = userService.getAddActivityUserList(new RequestParamsUtil().getParameters());
         return ResultVOUtil.success(userList);

@@ -135,4 +135,13 @@ public class PageController {
         return "activityUserAdd";
     }
 
+    /**
+     * 费用追加
+     */
+
+    @GetMapping("/appendAdd")
+    public String appendAdd() {
+        return "appendAdd";
+    }
+
 }

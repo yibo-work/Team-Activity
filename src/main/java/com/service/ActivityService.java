@@ -47,6 +47,11 @@ public interface ActivityService {
     int update(Activity activity);
 
     /**
+     * 结束活动
+     */
+    int endActivity(Integer id);
+
+    /**
      * 删除活动表
      */
     int deleteById(Integer id);

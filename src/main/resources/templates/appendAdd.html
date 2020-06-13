@@ -14,7 +14,7 @@
     <script charset="utf-8" th:src="@{/js/vue.js}" type="text/javascript"></script>
 </head>
 <body>
-<div class="layui-fluid">
+<div class="layui-fluid" id="vmAddActivityFee">
     <div class="layui-row">
         <form class="layui-form">
             <div class="layui-form-item">
@@ -100,6 +100,9 @@
             //监听提交
             form.on('submit(add)',
                 function (data) {
+
+                    data.field.activityId = addActivityFeeId;
+
                     //发异步，把数据提交给java
                     $.ajax({
                         url: "/append/save",
@@ -112,7 +115,9 @@
                                 layer.msg("增加成功", {icon: 6, time: 500},
                                     function () {
 
-                                        /*//发异步，把数据提交给controller
+                                        addFeeActivity.amount = parseInt(addFeeActivity.amount) + data.field.appendFee;
+
+                                        //发异步，把数据提交给controller
                                         $.ajax({
                                             url: "activity/update",
                                             data: JSON.stringify(addFeeActivity),
@@ -121,7 +126,7 @@
                                             type: "put",
                                             success: function (result) {
                                                 if (result.code === 200) {
-                                                    layer.msg("交纳团费成功", {icon: 6, time: 500},
+                                                    layer.msg("追加活动费用成功", {icon: 6, time: 500},
                                                         function () {
                                                             //关闭当前frame
                                                             xadmin.close();
@@ -132,12 +137,8 @@
                                                     layer.alert(result.msg);
                                                 }
                                             }
-                                        });*/
+                                        });
 
-                                        //关闭当前frame
-                                        xadmin.close();
-                                        // 可以对父窗口进行刷新
-                                        xadmin.father_reload();
                                     });
                             } else {
                                 layer.alert(result.msg);

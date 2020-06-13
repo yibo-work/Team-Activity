@@ -67,16 +67,26 @@
                                 <button @click="editActivity(activity.id)"
                                         class="layui-btn layui-btn-warm"
                                         id="editActivity"
-                                        onclick="xadmin.open('结束活动','/activityEdit',500,700)">
+                                        v-if="!activity.endTime"
+                                        onclick="xadmin.open('编辑活动','/activityEdit',500,700)">
+                                    <i class="layui-icon">&#xe631;</i>编辑活动
+                                </button>
+
+                                <button
+                                        @click="endActivity(activity.id)"
+                                        class="layui-btn"
+                                        v-if="!activity.endTime">
                                     <i class="layui-icon">&#xe631;</i>结束活动
                                 </button>
                                 <button @click="updateActivityUser(activity.id)"
                                         class="layui-btn layui-btn-warm"
+                                        v-if="!activity.endTime"
                                         onclick="xadmin.open('活动人员管理','/activityUserManage', 1200,1000,true)">
                                     <i class="layui-icon"></i>活动人员管理
                                 </button>
                                 <button @click="addActivityFee(activity.id)"
                                         class="layui-btn layui-btn-warm"
+                                        v-if="!activity.endTime"
                                         onclick="xadmin.open('活动费用追加','/appendAdd',500,700)">
                                     <i class="layui-icon"></i>活动费用追加
                                 </button>
@@ -162,6 +172,37 @@
                             success: function (result) {
                                 if (result.code === 200) {
                                     layer.msg('删除成功', {
+                                        icon: 1,
+                                        time: 1000
+                                    });
+                                    setTimeout(function () {
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.alert(result.msg, {icon: 5});
+                                }
+                            }
+                        });
+
+                    });
+            },
+            /**
+             * 结束团队活动
+             */
+            endActivity: function (id) {
+                layer.confirm('确认要结束吗？',
+                    function () {
+                        //发异步删除数据
+                        $.ajax({
+                            url: "/activity/endActivity",
+                            data: {
+                                id: id
+                            },
+                            dataType: "json",
+                            type: "put",
+                            success: function (result) {
+                                if (result.code === 200) {
+                                    layer.msg('结束成功', {
                                         icon: 1,
                                         time: 1000
                                     });

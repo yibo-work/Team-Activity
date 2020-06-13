@@ -88,6 +88,20 @@ public class ActivityController {
     }
 
     /**
+     * 结束活动
+     */
+    @PutMapping("/endActivity")
+    public ResultVO endActivity(@RequestParam(value = "id") Integer id) {
+        try {
+            activityService.endActivity(id);
+            return ResultVOUtil.success();
+        } catch (Exception ex) {
+            return ResultVOUtil.failure("结束失败！");
+        }
+
+    }
+
+    /**
      * 删除活动表
      */
     @DeleteMapping("/deleteById")

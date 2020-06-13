@@ -37,16 +37,15 @@
                         <textarea class="layui-textarea" id="remark" name="remark" rows="4"></textarea></div>
                 </div>
             </div>
-    </div>
 
-    <div class="layui-form-item">
-        <label class="layui-form-label"></label>
-        <button class="layui-btn" lay-filter="edit" lay-submit="">
-            交纳团费
-        </button>
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <button class="layui-btn" lay-filter="edit" lay-submit="">
+                    交纳团费
+                </button>
+            </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
 <script charset="UTF-8" type="text/javascript">
 
@@ -91,8 +90,8 @@
                 function (data) {
 
                     //组装数据
-                    data.field.id = editTeamId;
-                    data.field.teamFee = parseInt(addFeeTeam.teamFee) + parseInt(data.field);
+                    data.field.id = addTeamFeeId;
+                    data.field.teamFee = parseInt(addFeeTeam.teamFee) + parseInt(data.field.teamFee);
 
                     //发异步，把数据提交给controller
                     $.ajax({

@@ -76,6 +76,14 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     /**
+     * 结束活动
+     */
+    @Override
+    public int endActivity( Integer id) {
+        return activityDao.endActivity(id);
+    }
+
+    /**
      * 删除活动表
      */
     @Override

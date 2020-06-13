@@ -49,7 +49,6 @@
                                v-model="activity.startTime"></div>
                 </div>
             </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label" for="budget">
                     <span class="x-red">*</span>总预算
@@ -69,6 +68,16 @@
                     <div class="layui-input-inline layui-show-xs-block">
                         <input class="layui-input" id="avgBudget" lay-verify="required" name="avgBudget" type="text"
                                v-model="activity.avgBudget"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="amount">
+                    <span class="x-red">*</span>总消费
+                </label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <input class="layui-input" id="amount" lay-verify="required" name="amount" type="text"
+                               v-model="activity.amount"></div>
                 </div>
             </div>
 
